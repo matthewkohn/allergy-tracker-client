@@ -1,13 +1,17 @@
-import React from 'react'
-import { Card, Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { Card } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import DishInfo from './DishInfo'
+import Allergy from './Allergy'
 
-const Dish = () => {
+
+const Dish = ({card}) => {
+  const [flip, setFlip] = useState(false)
+
   return (
-    <DishCard>
-      <Typography variant="h6">Really Long Dish Name</Typography>
-      <Details variant="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda cumque ipsa reprehenderit qui vero facilis, ratione vitae amet. Totam cupiditate velix Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam cupiditate velix</Details>
-      <Details variant="subtitle">$29.99</Details>
+    <DishCard variant="outlined" onClick={() => setFlip(!flip)}>
+      {flip ? <DishInfo card={card} /> : <Allergy card={card} />}
+      
     </DishCard>
   )
 }
@@ -23,8 +27,18 @@ const DishCard = styled(Card)({
   height: '300px'
 })
 
-const Details = styled(Typography)({
-  padding: '10px 0',
-  overflow: 'auto',
-  color: 'grey'
-})
+
+
+
+// {
+//   id: 1,
+//   name: 'Dish1',
+//   description: 'lorafkalsflkahsfklhasklfhalksfhlkashsflkahkhfaklshflkah',
+//   price: 24.00,
+//   allergies: [
+//     { allergyName: 'gluten' }
+//   ],
+//   ingredients: [
+//     { ingredient: 'bread' }
+//   ]
+// }
