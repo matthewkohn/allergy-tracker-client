@@ -35,6 +35,30 @@ const SAMPLE = [
     ingredients: [
       { ingredient: 'bread' }
     ]
+  },
+  {
+    id: 1,
+    name: 'Dish1',
+    description: 'lorafkalsflkahsfklhasklfhalksfhlkashsflkahkhfaklshflkah',
+    price: 24.00,
+    allergies: [
+      { allergyName: 'gluten' }
+    ],
+    ingredients: [
+      { ingredient: 'bread' }
+    ]
+  },
+  {
+    id: 1,
+    name: 'Dish1',
+    description: 'lorafkalsflkahsfklhasklfhalksfhlkashsflkahkhfaklshflkah',
+    price: 24.00,
+    allergies: [
+      { allergyName: 'gluten' }
+    ],
+    ingredients: [
+      { ingredient: 'bread' }
+    ]
   }
 ]
 
