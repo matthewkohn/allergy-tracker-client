@@ -37,27 +37,27 @@ const SAMPLE = [
     ]
   },
   {
-    id: 1,
-    name: 'Dish1',
-    description: 'lorafkalsflkahsfklhasklfhalksfhlkashsflkahkhfaklshflkah',
-    price: 24.00,
+    id: 2,
+    name: 'Dish2',
+    description: 'hkhfaklshflkahlorafkalsflkahsfklhasklfhalksfhlkashsflka',
+    price: 74.42,
     allergies: [
-      { allergyName: 'gluten' }
+      { allergyName: 'shellfish' }
     ],
     ingredients: [
-      { ingredient: 'bread' }
+      { ingredient: 'shrimps' }
     ]
   },
   {
-    id: 1,
-    name: 'Dish1',
-    description: 'lorafkalsflkahsfklhasklfhalksfhlkashsflkahkhfaklshflkah',
+    id: 3,
+    name: 'Dish3',
+    description: 'halksfhlkashsflkahkhfaklshfllorafkalsflkahsfklhasklfkah',
     price: 24.00,
     allergies: [
-      { allergyName: 'gluten' }
+      { allergyName: 'dairy' }
     ],
     ingredients: [
-      { ingredient: 'bread' }
+      { ingredient: 'cheese' }
     ]
   }
 ]
