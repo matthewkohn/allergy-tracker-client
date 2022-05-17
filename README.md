@@ -10,7 +10,7 @@ Fork and clone this repo, then run the following to install dependencies:
 ```
 npm install -g npm
 npm install react-router-dom@6
-npm install @mui/material @mui/styled-engine-sc styled-components
+npm install @mui/material @mui/styled-engine-sc styled-components @emotion/react @emotion/styled
 npm start
 
 ```
