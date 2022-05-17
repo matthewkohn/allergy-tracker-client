@@ -1,44 +1,25 @@
-import React, { useState } from 'react'
-import { Card } from '@mui/material'
-import { styled } from '@mui/material/styles'
-import DishInfo from './DishInfo'
-import Allergy from './Allergy'
-
+import React from 'react'
+import { CardActionArea, CardContent, Typography } from '@mui/material'
+import { styled } from '@mui/material'
 
 const Dish = ({card}) => {
-  const [flip, setFlip] = useState(false)
-
   return (
-    <DishCard variant="outlined" onClick={() => setFlip(!flip)}>
-      {flip ? <DishInfo card={card} /> : <Allergy card={card} />}
-      
-    </DishCard>
+    <CardActionArea>
+      <CardContent>
+        <Typography gutterBottom variant="h5">{card.name}</Typography>
+        <Details variant="p">{card.description}</Details>
+        <br/><br/>
+        <Details variant="subtitle">${card.price}</Details>
+      </CardContent>
+    </CardActionArea>
   )
 }
 
 export default Dish
 
-const DishCard = styled(Card)({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '10px 30px',
-  padding: '20px',
-  width: '200px',
-  height: '300px'
+const Details = styled(Typography)({
+  padding: '10px 0',
+  overflow: 'auto',
+  color: 'grey',
+  lineHeight: '25px'
 })
-
-
-
-
-// {
-//   id: 1,
-//   name: 'Dish1',
-//   description: 'lorafkalsflkahsfklhasklfhalksfhlkashsflkahkhfaklshflkah',
-//   price: 24.00,
-//   allergies: [
-//     { allergyName: 'gluten' }
-//   ],
-//   ingredients: [
-//     { ingredient: 'bread' }
-//   ]
-// }
