@@ -11,7 +11,7 @@ const Allergy = ({card}) => {
       <li key={a.id} >{a.name}</li>
     )
     ingredientsList = card.ingredients.map(i =>
-      <li key={i.id}>{i.name} {i.is_avoidable ? '(Avoidable)' : '(Unavoidable)'}</li>
+      <li key={i.id}>{i.name}</li>
     )
   } 
 
