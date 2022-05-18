@@ -5,19 +5,15 @@ const Allergy = ({card}) => {
 
   let allergiesList = 'none'
   let ingredientsList = 'none'
-  // let avoidability = 'n/a'
 
   if (card.allergies.length > 0) {
     allergiesList = card.allergies.map(a => 
       <li key={a.id} >{a.name}</li>
     )
-    // avoidability
     ingredientsList = card.ingredients.map(i =>
       <li key={i.id}>{i.name} {i.is_avoidable ? '(Avoidable)' : '(Unavoidable)'}</li>
     )
   } 
-  
-  // console.log(card.allergies)
 
   return (
     <CardActionArea>
