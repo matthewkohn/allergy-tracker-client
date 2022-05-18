@@ -7,7 +7,7 @@ import { AppBar, styled, Typography } from '@mui/material'
 
 const App = () => {
   return (
-    <Container>
+    <Container sx={{maxHeight: '100vh'}}>
       <Header>
         <Typography variant="h3">Cliff's Notes for Restaurant Pros</Typography>
       </Header>
@@ -24,5 +24,7 @@ export default App
 
 const Header = styled(AppBar)({
   padding: '15px',
-  textAlign: 'center'
+  textAlign: 'center',
+  position: 'fixed',
+  display: 'block'
 })
