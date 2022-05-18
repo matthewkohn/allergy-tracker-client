@@ -37,12 +37,14 @@ const SAMPLE = [
     ],
     "ingredients": [
         {
+            "id": 1,
             "name": "broccoli",
             "is_avoidable": true,
             "dish_id": 1,
             "allergy_id": 2
         },
         {
+          "id": 2,
             "name": "donuts",
             "is_avoidable": false,
             "dish_id": 1,
@@ -57,20 +59,24 @@ const SAMPLE = [
     "price": 36.99,
     "allergies": [
         {
+            "id": 2,
             "name": "dairy"
         },
         {
+            "id": 1,
             "name": "gluten"
         }
     ],
     "ingredients": [
         {
+          "id": 3,
             "name": "Cheese and cream",
             "is_avoidable": false,
             "dish_id": 1,
             "allergy_id": 2
         },
         {
+          "id": 4,
             "name": "Puffed farro",
             "is_avoidable": true,
             "dish_id": 1,
@@ -85,20 +91,24 @@ const SAMPLE = [
     "price": 31.22,
     "allergies": [
         {
+            "id": 3,
             "name": "seafood"
         },
         {
+            "id": 4,
             "name": "nut"
         }
     ],
     "ingredients": [
         {
+          "id": 5,
             "name": "Cheese",
             "is_avoidable": false,
             "dish_id": 1,
             "allergy_id": 2
         },
         {
+          "id": 6,
             "name": "eyes",
             "is_avoidable": false,
             "dish_id": 1,

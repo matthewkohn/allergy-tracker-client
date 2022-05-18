@@ -9,11 +9,11 @@ const Allergy = ({card}) => {
 
   if (card.allergies.length > 0) {
     allergiesList = card.allergies.map(a => 
-      <li key={a.name} >{a.name}</li>
+      <li key={a.id} >{a.name}</li>
     )
     // avoidability
     ingredientsList = card.ingredients.map(i =>
-      <li key={i.name}>{i.name}</li>
+      <li key={i.id}>{i.name} {i.is_avoidable ? '(Avoidable)' : '(Unavoidable)'}</li>
     )
   } 
   
@@ -25,7 +25,8 @@ const Allergy = ({card}) => {
         <Typography gutterBottom variant="h5">{card.name}</Typography>
         <Typography gutterBottom variant="subtitle1">Allergies:</Typography>
         {allergiesList}
-        <Typography gutterBottom variant="subtitle1">Ingredients:</Typography>
+        <br/>
+        <Typography gutterBottom variant="subtitle1">Guilty Ingredients:</Typography>
         {ingredientsList}
       </CardContent>
     </CardActionArea>
