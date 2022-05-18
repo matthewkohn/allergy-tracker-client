@@ -4,7 +4,6 @@ import { styled } from '@mui/material/styles'
 import Dish from './Dish'
 import Allergy from './Allergy'
 
-
 const DishCard = ({card}) => {
   const [flip, setFlip] = useState(true)
 

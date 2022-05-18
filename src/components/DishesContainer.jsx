@@ -28,12 +28,12 @@ const SAMPLE = [
     "description": "Wood fired rotisserie chicken, juicy delicious",
     "price": 22.94,
     "allergies": [
-        {
-            "name": "shellfish"
-        },
-        {
-            "name": "allium"
-        }
+        // {
+        //     "name": "shellfish"
+        // },
+        // {
+        //     "name": "allium"
+        // }
     ],
     "ingredients": [
         {
