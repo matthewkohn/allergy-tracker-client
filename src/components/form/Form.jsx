@@ -1,10 +1,17 @@
 import { Box, Button, styled } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AllergySelection from './AllergySelection'
 import DishInput from './DishInput'
 
 
 const Form = () => {
+  const [allergies, setAllergies] = useState([])
+  
+  useEffect(() => {
+    fetch('http://localhost:9292/allergies')
+      .then(res => res.json())
+      .then(setAllergies)
+  }, [])
 
 
   const handleSubmit = (e) => {
@@ -17,7 +24,7 @@ const Form = () => {
     
       <FormBox component="form" noValidate autoComplete="off">
         <DishInput />
-        <AllergySelection />
+        <AllergySelection allergies={allergies} />
         <Button type="submit" onClick={e => handleSubmit(e)}>Submit</Button>
       </FormBox>
     

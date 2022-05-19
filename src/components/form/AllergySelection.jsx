@@ -1,36 +1,22 @@
 // import React, { useState } from 'react'
 import React from 'react'
-import { Box, Checkbox, FormGroup, FormControlLabel, styled, Typography } from '@mui/material'
+import { Box, FormGroup, Grid, styled, Typography } from '@mui/material'
 import AllergyRow from './AllergyRow'
 
-const AllergySelection = () => {
+const AllergySelection = ({ allergies }) => {
 
+  const allergiesList = allergies.map((allergy) => (
+    <AllergyRow allergyObj={allergy} key={allergy.id} />
+  ))
 
   return (
     <AllergyBox>
       <Typography variant="h6">Allergies?</Typography>
       <FormGroup>
-        {/* <FormControlLabel control={<Checkbox />} label="gluten" />
-        <FormControl>
-          <InputLabel id="ingredients-label">Ingredients</InputLabel>
-          <Select 
-            labelId="ingredients-label"
-            value={1}
-            // onChange={handleChange}
-          >
-            <MenuItem value=""><em>None</em></MenuItem>
-            <MenuItem value={1}>One</MenuItem>
-            <MenuItem value={2}>Two</MenuItem>
-            <MenuItem value={3}>Three</MenuItem>
-            
-          </Select>
+        <GridContainer container>
 
-        </FormControl> */}
-        <AllergyRow />
-        <FormControlLabel control={<Checkbox />} label="dairy" />
-        <FormControlLabel control={<Checkbox />} label="nut" />
-        <FormControlLabel control={<Checkbox />} label="allium" />
-        <FormControlLabel control={<Checkbox />} label="shellfish" />
+        {allergiesList}
+        </GridContainer>
       </FormGroup>
       
     </AllergyBox>
@@ -46,9 +32,10 @@ const AllergyBox = styled(Box)({
   borderRadius: '5px'
 })
 
-// const GridContainer = styled(Grid)({
-//   flexDirection: 'column'
-// })
+const GridContainer = styled(Grid)({
+  flexDirection: 'row',
+  justifyContent: 'space-between'
+})
 
 
 
