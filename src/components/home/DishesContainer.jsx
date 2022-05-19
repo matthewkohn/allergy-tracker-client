@@ -12,6 +12,7 @@ const DishesContainer = () => {
       .then(setFlashcards)
   }, [])
 
+  //refactor
   const flashcardList = flashcards.map(card => {
     return <DishCard card={card} key={card.id} />
   })

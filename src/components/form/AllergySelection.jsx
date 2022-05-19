@@ -1,31 +1,30 @@
-// import React, { useState } from 'react'
 import React from 'react'
 import { Box, FormGroup, Grid, styled, Typography } from '@mui/material'
 import AllergyRow from './AllergyRow'
 
-const AllergySelection = ({ allergies }) => {
 
-  const allergiesList = allergies.map((allergy) => (
-    <AllergyRow allergyObj={allergy} key={allergy.id} />
-  ))
+const AllergySelection = ({ allergiesArr }) => {
 
+  const allergiesList = allergiesArr.map((a) => (
+    <AllergyRow allergyObj={a} key={a.id} />
+    ))
+    
   return (
-    <AllergyBox>
+    <ChoicesBox>
       <Typography variant="h6">Allergies?</Typography>
       <FormGroup>
         <GridContainer container>
-
-        {allergiesList}
+          {allergiesList}
         </GridContainer>
       </FormGroup>
       
-    </AllergyBox>
+    </ChoicesBox>
   )
 }
 
 export default AllergySelection
 
-const AllergyBox = styled(Box)({
+const ChoicesBox = styled(Box)({
   padding: '10px',
   margin: '5px',
   border: '2px solid red',

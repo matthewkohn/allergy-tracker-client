@@ -2,11 +2,9 @@ import React from 'react'
 import { FormControl, FormControlLabel, FormGroup, InputLabel, Select, MenuItem, Checkbox } from '@mui/material'
 
 const AllergyRow = ({ allergyObj }) => {
-  // allergy_id: boolean
-  // dropdown => ingredient_names for that allergy
-  // const [ingredients, setIngredients] = useState([])
-
-  console.log(`AllergyRow object: ${allergyObj}`)
+  // console.log(allergyObj.name)
+  const ingredientsArr = allergyObj.ingredients.map(i => i.name)
+  console.log(ingredientsArr)
 
   return (
     <FormGroup>
