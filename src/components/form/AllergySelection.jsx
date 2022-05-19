@@ -1,48 +1,38 @@
 // import React, { useState } from 'react'
 import React from 'react'
-import { Box, Checkbox, FormControlLabel, FormGroup, Grid, TextField, styled, Typography } from '@mui/material'
+import { Box, Checkbox, FormGroup, FormControlLabel, styled, Typography } from '@mui/material'
+import AllergyRow from './AllergyRow'
 
 const AllergySelection = () => {
-  // const [checked, setChecked] = useState(true);
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setChecked(event.target.checked);
-  // };
-
 
 
   return (
     <AllergyBox>
       <Typography variant="h6">Allergies?</Typography>
       <FormGroup>
-        <GridContainer container>
-          <Grid container>
-            <Grid item>
-              <FormControlLabel control={<Checkbox />} label="Allergy1" labelPlacement='start'/>
-            </Grid>
-            <Grid item>
-              <FormControlLabel control={<TextField />} />
-            </Grid>
-          </Grid>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="Allergy2" labelPlacement='start'/>    
-          </Grid>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="Allergy3" labelPlacement='start'/>    
-          </Grid>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="Allergy4" labelPlacement='start'/>    
-          </Grid>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="Allergy5" labelPlacement='start'/>    
-          </Grid>
-          
-        </GridContainer>
-        {/* <FormControlLabel control={<Checkbox />} label="Allergy2" labelPlacement='start'/>    
-        <FormControlLabel control={<Checkbox />} label="Allergy3" labelPlacement='start'/>    
-        <FormControlLabel control={<Checkbox />} label="Allergy4" labelPlacement='start'/>    
-        <FormControlLabel control={<Checkbox />} label="Allergy5" labelPlacement='start'/> */}
+        {/* <FormControlLabel control={<Checkbox />} label="gluten" />
+        <FormControl>
+          <InputLabel id="ingredients-label">Ingredients</InputLabel>
+          <Select 
+            labelId="ingredients-label"
+            value={1}
+            // onChange={handleChange}
+          >
+            <MenuItem value=""><em>None</em></MenuItem>
+            <MenuItem value={1}>One</MenuItem>
+            <MenuItem value={2}>Two</MenuItem>
+            <MenuItem value={3}>Three</MenuItem>
+            
+          </Select>
+
+        </FormControl> */}
+        <AllergyRow />
+        <FormControlLabel control={<Checkbox />} label="dairy" />
+        <FormControlLabel control={<Checkbox />} label="nut" />
+        <FormControlLabel control={<Checkbox />} label="allium" />
+        <FormControlLabel control={<Checkbox />} label="shellfish" />
       </FormGroup>
+      
     </AllergyBox>
   )
 }
@@ -56,6 +46,55 @@ const AllergyBox = styled(Box)({
   borderRadius: '5px'
 })
 
-const GridContainer = styled(Grid)({
-  flexDirection: 'column'
-})
+// const GridContainer = styled(Grid)({
+//   flexDirection: 'column'
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+<FormGroup>
+        <GridContainer container>
+          <Grid container>
+            <Grid item>
+              <FormControlLabel control={<Checkbox />} label="gluten" labelPlacement='start'/>
+            </Grid>
+            <Grid item>
+              <FormControlLabel control={
+              
+              <Select />
+              } />
+            </Grid>
+          </Grid>
+          <Grid item>
+            <FormControlLabel control={<Checkbox />} label="dairy" labelPlacement='start'/>    
+          </Grid>
+          <Grid item>
+            <FormControlLabel control={<Checkbox />} label="nut" labelPlacement='start'/>    
+          </Grid>
+          <Grid item>
+            <FormControlLabel control={<Checkbox />} label="allium" labelPlacement='start'/>    
+          </Grid>
+          <Grid item>
+            <FormControlLabel control={<Checkbox />} label="shellfish" labelPlacement='start'/>    
+          </Grid>
+          
+        </GridContainer>
+        {/* <FormControlLabel control={<Checkbox />} label="Allergy2" labelPlacement='start'/>    
+        <FormControlLabel control={<Checkbox />} label="Allergy3" labelPlacement='start'/>    
+        <FormControlLabel control={<Checkbox />} label="Allergy4" labelPlacement='start'/>    
+        <FormControlLabel control={<Checkbox />} label="Allergy5" labelPlacement='start'/> }
+        </FormGroup>
+
+*/
