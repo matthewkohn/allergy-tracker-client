@@ -29,7 +29,7 @@ const AllergySelection = ({ allergiesArr }) => {
 export default AllergySelection
 
 const ChoicesBox = styled(Box)({
-  padding: '10px',
+  padding: '30px',
   margin: '5px',
   border: '2px solid red',
   borderRadius: '5px'

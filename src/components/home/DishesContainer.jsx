@@ -21,9 +21,9 @@ const DishesContainer = () => {
 
   return (
     <DishContainer >
-      <Fab color="secondary" onClick={() => navigate('/new')}>
+      <AddBtn color="secondary" onClick={() => navigate('/new')}>
         <AddIcon />
-      </Fab>
+      </AddBtn>
       {flashcardList}
     </DishContainer>
   )
@@ -37,4 +37,13 @@ const DishContainer = styled(Container)({
   flexDirection: 'row',
   flexWrap: 'wrap',
   justifyContent: 'space-around'
+})
+
+const AddBtn = styled(Fab)({
+  position: 'fixed',
+  right: '20px',
+  width: '70px',
+  height: '70px',
+  backgroundColor: 'lightgreen',
+  color: '#000'
 })
