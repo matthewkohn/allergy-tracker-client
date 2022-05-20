@@ -21,5 +21,5 @@ const Details = styled(Typography)({
   padding: '10px 0',
   overflow: 'auto',
   color: 'grey',
-  lineHeight: '25px'
+  lineHeight: '20px'
 })

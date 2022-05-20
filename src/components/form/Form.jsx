@@ -43,7 +43,7 @@ const FormBox = styled(Box)({
   margin: '100px',
   padding: '10px',
   border: '10px solid black',
-  width: '1fr',
+  minWidth: '80%',
   height: '90%'
 })
 
