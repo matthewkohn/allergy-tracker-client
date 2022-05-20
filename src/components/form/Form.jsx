@@ -2,11 +2,24 @@ import React, { useEffect, useState } from 'react'
 import { Box, Button, Fab, styled } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';import AllergySelection from './AllergySelection'
 import DishInput from './DishInput'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Form = () => {
   const [allergies, setAllergies] = useState([])
+  const [preloadedValues, setPreloadedValues] = useState(null)
+  const location = useLocation()
+  let updateObj = location.state
+  if (updateObj !== null && preloadedValues === null) {
+    setPreloadedValues(updateObj)
+  }
   const navigate = useNavigate()
+  
+  // const createDefaultData = (data) => {
+
+  // }
+
+  console.log(preloadedValues)
+
 
   useEffect(() => {
     fetch('http://localhost:9292/allergies')
@@ -21,15 +34,16 @@ const Form = () => {
     navigate('/')
   }
 
+
   return (
     <>
       <BackBtn color="secondary" onClick={() => navigate('/')}>
         <ArrowBackIosNewIcon />
       </BackBtn>
-      <FormBox component="form" noValidate autoComplete="off">
+      <FormBox component="form" noValidate autoComplete="off" onSubmit={e => handleSubmit(e)}>
         <DishInput />
         <AllergySelection allergiesArr={allergies} />
-        <Button type="submit" onClick={e => handleSubmit(e)}>Submit</Button>
+        <Button type="submit" >Submit</Button>
       </FormBox>
     
     </>

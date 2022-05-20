@@ -36,8 +36,10 @@ const ChoicesBox = styled(Box)({
 })
 
 const GridContainer = styled(Grid)({
-  flexDirection: 'row',
-  justifyContent: 'space-between'
+  // flexDirection: 'row',
+  // justifyContent: 'space-around',
+  display: 'inline-flex',
+  flexWrap: 'wrap'
 })
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Checkbox, FormControlLabel, FormGroup, Grid, MenuItem, Select } from '@mui/material'
+import { Checkbox, FormControlLabel, FormGroup, Grid, MenuItem, Select, styled } from '@mui/material'
 import { removeDuplicates } from '../../functions/arrayHelpers'
 
 const AllergyRow = ({ allergy }) => {
@@ -28,7 +28,7 @@ const AllergyRow = ({ allergy }) => {
   }
 
   return (
-    <Grid item>
+    <AllergyGridItem item>
       <FormGroup>
         <FormControlLabel 
           control={ 
@@ -59,8 +59,12 @@ const AllergyRow = ({ allergy }) => {
           placeholder="true" 
         />
       </FormGroup>
-    </Grid>
+    </AllergyGridItem>
   )
 }
 
 export default AllergyRow
+
+const AllergyGridItem = styled(Grid)({
+  width: '20%'
+})

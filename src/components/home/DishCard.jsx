@@ -4,11 +4,15 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import Dish from './Dish'
 import Allergy from './Allergy'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const DishCard = ({ card, onUpdate }) => {
   const [flip, setFlip] = useState(true)
-  
+  const navigate = useNavigate()
+
+  const onUpdateDish = () => {
+    navigate('/update', { state: card })
+  }
 
   const handleDelete = () => {
     fetch(`http://localhost:9292/dishes/${card.id}`, {
@@ -26,7 +30,7 @@ const DishCard = ({ card, onUpdate }) => {
     <FlashCard variant="outlined" onClick={() => setFlip(!flip)}>
       {flip ? <Dish card={card} /> : <Allergy card={card} />}
       <CardUpdateDiv >
-        <IconButton sx={{ zIndex: 3}} >
+        <IconButton onClick={() => onUpdateDish()} >
           <EditIcon />
         </IconButton>
         <IconButton onClick={() => handleDelete()}>
