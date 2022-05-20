@@ -7,8 +7,7 @@ const AllergySelection = ({ allergiesArr }) => {
 
   const allergiesList = allergiesArr.map((a) => (
     <AllergyRow 
-      name={a.name} 
-      ingredientsArr={a.ingredients} 
+      allergy={a} 
       key={a.id} 
     />
   ))
@@ -16,6 +15,7 @@ const AllergySelection = ({ allergiesArr }) => {
   return (
     <ChoicesBox>
       <Typography variant="h6">Allergies?</Typography>
+      <Typography variant="p"><em>If yes, choose the allergy & then select the corresponding ingredient</em></Typography>
       <FormGroup>
         <GridContainer container>
           {allergiesList}
