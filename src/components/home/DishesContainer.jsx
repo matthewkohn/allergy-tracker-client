@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import DishCard from './DishCard'
-import { Container } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Container, Fab, styled } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router-dom'
 
 const DishesContainer = () => {
   const [flashcards, setFlashcards] = useState([])
+  const navigate = useNavigate()
   
   useEffect(() => {
     fetch('http://localhost:9292/dishes')
@@ -19,6 +21,9 @@ const DishesContainer = () => {
 
   return (
     <DishContainer >
+      <Fab color="secondary" onClick={() => navigate('/new')}>
+        <AddIcon />
+      </Fab>
       {flashcardList}
     </DishContainer>
   )

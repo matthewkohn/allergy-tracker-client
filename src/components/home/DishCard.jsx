@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Card } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Card, styled } from '@mui/material'
+
 import Dish from './Dish'
 import Allergy from './Allergy'
+// import { useNavigate } from 'react-router-dom';
 
 const DishCard = ({card}) => {
   const [flip, setFlip] = useState(true)
+  
 
   return (
     <FlashCard variant="outlined" onClick={() => setFlip(!flip)}>

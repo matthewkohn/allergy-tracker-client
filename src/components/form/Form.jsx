@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Box, Button, styled } from '@mui/material'
 import AllergySelection from './AllergySelection'
 import DishInput from './DishInput'
-
+import { useNavigate } from 'react-router-dom'
 
 const Form = () => {
   const [allergies, setAllergies] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch('http://localhost:9292/allergies')
@@ -17,6 +18,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("You did it!")
+    navigate('/')
   }
 
   return (
