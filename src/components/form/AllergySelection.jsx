@@ -6,8 +6,12 @@ import AllergyRow from './AllergyRow'
 const AllergySelection = ({ allergiesArr }) => {
 
   const allergiesList = allergiesArr.map((a) => (
-    <AllergyRow allergyObj={a} key={a.id} />
-    ))
+    <AllergyRow 
+      name={a.name} 
+      ingredientsArr={a.ingredients} 
+      key={a.id} 
+    />
+  ))
     
   return (
     <ChoicesBox>
