@@ -13,10 +13,15 @@ const DishesContainer = () => {
       .then(res => res.json())
       .then(setFlashcards)
   }, [])
+  
+  const updateFlashcards = (deletedId) => {
+    const updatedCards = flashcards.filter((card => card.id !== deletedId))
+    setFlashcards(updatedCards)
+  }
 
   //refactor
   const flashcardList = flashcards.map(card => {
-    return <DishCard card={card} key={card.id} />
+    return <DishCard card={card} onUpdate={updateFlashcards} key={card.id} />
   })
 
   return (
