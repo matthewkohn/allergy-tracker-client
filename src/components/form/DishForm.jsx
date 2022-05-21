@@ -1,7 +1,7 @@
 import { Box, Grid, styled, TextField, FormControl } from '@mui/material'
 import React from 'react'
 
-const DishInput = () => {
+const DishForm = () => {
   return (
     <DishBox>
       <FormControl
@@ -48,7 +48,7 @@ const DishInput = () => {
   )
 }
 
-export default DishInput
+export default DishForm
 
 const DishBox = styled(Box)({
   padding: '10px',

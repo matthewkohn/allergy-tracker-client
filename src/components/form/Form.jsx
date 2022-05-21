@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Fab, styled } from '@mui/material'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';import AllergySelection from './AllergySelection'
-import DishInput from './DishInput'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import AllergyForm from './AllergyForm'
+import DishForm from './DishForm'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const Form = () => {
-  const [allergies, setAllergies] = useState([])
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    allergy_ids: []
+  })
+  
+
+
   const [preloadedValues, setPreloadedValues] = useState(null)
   const location = useLocation()
   let updateObj = location.state
@@ -17,16 +26,14 @@ const Form = () => {
   // const createDefaultData = (data) => {
 
   // }
-
+  console.log('//------Passed preloadedValues ------//')
   console.log(preloadedValues)
+ 
+  console.log('//------Form Data ------//')
+  console.log(formData.allergy_ids)
 
 
-  useEffect(() => {
-    fetch('http://localhost:9292/allergies')
-      .then(res => res.json())
-      .then(setAllergies)
-      .catch(console.log)
-  }, [])
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -41,8 +48,8 @@ const Form = () => {
         <ArrowBackIosNewIcon />
       </BackBtn>
       <FormBox component="form" noValidate autoComplete="off" onSubmit={e => handleSubmit(e)}>
-        <DishInput />
-        <AllergySelection allergiesArr={allergies} />
+        <DishForm />
+        <AllergyForm />
         <Button type="submit" >Submit</Button>
       </FormBox>
     
