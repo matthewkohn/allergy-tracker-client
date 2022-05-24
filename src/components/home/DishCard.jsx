@@ -10,10 +10,6 @@ const DishCard = ({ card, onUpdate }) => {
   const [flip, setFlip] = useState(true)
   const navigate = useNavigate()
 
-  const onUpdateDish = () => {
-    navigate('/update', { state: card })
-  }
-
   const handleDelete = () => {
     fetch(`http://localhost:9292/dishes/${card.id}`, {
       method: 'DELETE',
@@ -30,7 +26,7 @@ const DishCard = ({ card, onUpdate }) => {
     <FlashCard variant="outlined" onClick={() => setFlip(!flip)}>
       {flip ? <Dish card={card} /> : <Allergy card={card} />}
       <CardUpdateDiv >
-        <IconButton onClick={() => onUpdateDish()} >
+        <IconButton onClick={() => navigate('/update', { state: card })} >
           <EditIcon />
         </IconButton>
         <IconButton onClick={() => handleDelete()}>

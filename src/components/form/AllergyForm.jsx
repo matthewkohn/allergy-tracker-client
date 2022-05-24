@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Box, FormGroup, Grid, styled, Typography } from '@mui/material'
 import AllergyRow from './AllergyRow'
 
-const AllergyForm = () => {
+const AllergyForm = ({ formData, onFormUpdate }) => {
   const [allergiesFromDb, setAllergiesFromDb] = useState([])
   const [allergyFormChoices, setAllergyFormChoices] = useState({
     allergy_id: 0,

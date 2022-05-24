@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Fab, styled } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AllergyForm from './AllergyForm'
@@ -12,31 +12,36 @@ const Form = () => {
     price: 0,
     allergy_ids: []
   })
-  
-
-
-  const [preloadedValues, setPreloadedValues] = useState(null)
-  const location = useLocation()
-  let updateObj = location.state
-  if (updateObj !== null && preloadedValues === null) {
-    setPreloadedValues(updateObj)
-  }
   const navigate = useNavigate()
+  const location = useLocation()
   
-  // const createDefaultData = (data) => {
+  useEffect(() => {
+    let updateObj = location.state
+    if (updateObj !== null) {
+      setFormData({
+        name: updateObj.name,
+        description: updateObj.description,
+        price: updateObj.price
+      })
+    }
+  }, [location.state])
 
-  // }
-  console.log('//------Passed preloadedValues ------//')
-  console.log(preloadedValues)
- 
+
   console.log('//------Form Data ------//')
-  console.log(formData.allergy_ids)
+  // console.log(formData.allergy_ids)
+  console.log(formData)
 
-
-
-
+console.log(location)
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (location.pathname === '/update') {
+      console.log('I should PATCH this')
+    } else if (location.pathname === '/new') {
+      console.log('I should POST this')
+    } else {
+      console.log("We've got a small problem...")
+    }
+
     console.log("You did it!")
     navigate('/')
   }
@@ -48,8 +53,8 @@ const Form = () => {
         <ArrowBackIosNewIcon />
       </BackBtn>
       <FormBox component="form" noValidate autoComplete="off" onSubmit={e => handleSubmit(e)}>
-        <DishForm />
-        <AllergyForm />
+        <DishForm formData={formData} onFormUpdate={setFormData} />
+        <AllergyForm formData={formData} onFormUpdate={setFormData} />
         <Button type="submit" >Submit</Button>
       </FormBox>
     

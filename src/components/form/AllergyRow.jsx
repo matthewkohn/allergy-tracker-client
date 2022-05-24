@@ -22,7 +22,7 @@ const AllergyRow = ({ allergy, allergyFormChoices, onAllergyFormChoices }) => {
   const handleChecked = (e) => {
     console.log(allergy.id)
     onAllergyFormChoices({...allergyFormChoices, allergy_id: allergy.id})
-
+    
     console.log(e.target.checked)
     setChecked(e.target.checked)
   }

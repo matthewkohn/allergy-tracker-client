@@ -1,7 +1,19 @@
 import { Box, Grid, styled, TextField, FormControl } from '@mui/material'
 import React from 'react'
 
-const DishForm = () => {
+const DishForm = ({ formData, onFormUpdate }) => {
+
+  const updateForm = (e) => {
+    // onFormUpdate(e.target.value)
+    // console.log(e.target.name)
+    const name = e.target.name
+    let value = e.target.value
+    onFormUpdate({
+      ...formData,
+      [name]: value
+    })
+  }
+
   return (
     <DishBox>
       <FormControl
@@ -14,8 +26,8 @@ const DishForm = () => {
               label="Dish Name" 
               name="name"
               type="text" 
-              // value={}
-              // onChange={} 
+              value={formData.name}
+              onChange={(e) => updateForm(e)} 
               required/>
           </Grid>
           <Grid item lg={3} md={3} sm={12}>
@@ -23,8 +35,8 @@ const DishForm = () => {
               label="Price" 
               name="price"
               type="number"
-              // value={}
-              // onChange={} 
+              value={formData.price}
+              onChange={(e) => updateForm(e)} 
               required/>
           </Grid>
         </Grid>
@@ -37,8 +49,8 @@ const DishForm = () => {
               maxRows={8}
               maxLength={"200"}
               name="description"
-              // value={}
-              // onChange={}
+              value={formData.description}
+              onChange={(e) => updateForm(e)}
               required
             />
           </Grid>
