@@ -12,6 +12,7 @@ const Form = () => {
     price: 0,
     allergy_ids: []
   })
+  const [chosenAllergies, setChosenAllergies] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
   
@@ -26,12 +27,14 @@ const Form = () => {
     }
   }, [location.state])
 
+  const updateAllergies = (choicesArr) => {
+    setChosenAllergies(choicesArr)
+    setFormData({
+      ...formData,
+      allergy_ids: choicesArr
+    })
+  }
 
-  console.log('//------Form Data ------//')
-  // console.log(formData.allergy_ids)
-  console.log(formData)
-
-console.log(location)
   const handleSubmit = (e) => {
     e.preventDefault()
     if (location.pathname === '/update') {
@@ -46,7 +49,6 @@ console.log(location)
     navigate('/')
   }
 
-
   return (
     <>
       <BackBtn color="secondary" onClick={() => navigate('/')}>
@@ -54,7 +56,7 @@ console.log(location)
       </BackBtn>
       <FormBox component="form" noValidate autoComplete="off" onSubmit={e => handleSubmit(e)}>
         <DishForm formData={formData} onFormUpdate={setFormData} />
-        <AllergyForm formData={formData} onFormUpdate={setFormData} />
+        <AllergyForm chosenAllergies={chosenAllergies} onChosenAllergies={updateAllergies} />
         <Button type="submit" >Submit</Button>
       </FormBox>
     

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Box, FormGroup, Grid, styled, Typography } from '@mui/material'
 import AllergyRow from './AllergyRow'
 
-const AllergyForm = ({ formData, onFormUpdate }) => {
+const AllergyForm = ({ chosenAllergies, onChosenAllergies }) => {
   const [allergiesFromDb, setAllergiesFromDb] = useState([])
   useEffect(() => {
     fetch('http://localhost:9292/allergies')
@@ -10,29 +10,19 @@ const AllergyForm = ({ formData, onFormUpdate }) => {
     .then(setAllergiesFromDb)
     .catch(console.log)
   }, [])
-  
-  const [chosenAllergies, setChosenAllergies] = useState([])
-  console.log("chosenAllergies array: ", chosenAllergies)
-  // Need to update formData.allergy_ids = []
-  //   push {allergy_id: 2, ingredient_name:'cheese'}
-
 
   const handleUpdateAllergies = (isChecked, choice) => {
     if (isChecked === false && choice.ingredient_name) {
       const updatedAllergies = choice.allergy_id ? chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id) : chosenAllergies
-      setChosenAllergies(updatedAllergies)
+      onChosenAllergies(updatedAllergies)
     } else if (isChecked && choice.ingredient_name !== '') {
       const uniqueArr = chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id)
-      setChosenAllergies([...uniqueArr, choice])
+      onChosenAllergies([...uniqueArr, choice])
     } else {
-      console.log("Something went really wrong")
+      console.log("Don't forget to choose an ingredient!")
     }
   }
   
-  // onFormUpdate({
-  //   ...formData,
-  //   allergy_ids: chosenAllergies
-  // })
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
       onUpdateAllergies={handleUpdateAllergies}
