@@ -40,7 +40,15 @@ const Form = () => {
     if (location.pathname === '/update') {
       console.log('I should PATCH this')
     } else if (location.pathname === '/new') {
-      console.log('I should POST this')
+      fetch("http://localhost:9292/dishes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(r => r.json())
+      .then(console.log)
     } else {
       console.log("We've got a small problem...")
     }
