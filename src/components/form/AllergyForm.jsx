@@ -4,30 +4,42 @@ import AllergyRow from './AllergyRow'
 
 const AllergyForm = ({ formData, onFormUpdate }) => {
   const [allergiesFromDb, setAllergiesFromDb] = useState([])
-  const [allergyFormChoices, setAllergyFormChoices] = useState({
-    allergy_id: 0,
-    ingredient_name: ""
-  })
-
-
   useEffect(() => {
     fetch('http://localhost:9292/allergies')
-      .then(res => res.json())
-      .then(setAllergiesFromDb)
-      .catch(console.log)
+    .then(res => res.json())
+    .then(setAllergiesFromDb)
+    .catch(console.log)
   }, [])
+  
+  const [chosenAllergies, setChosenAllergies] = useState([])
+  console.log("chosenAllergies array: ", chosenAllergies)
+  // Need to update formData.allergy_ids = []
+  //   push {allergy_id: 2, ingredient_name:'cheese'}
 
+
+  const handleUpdateAllergies = (isChecked, choice) => {
+    if (isChecked === false && choice.ingredient_name) {
+      const updatedAllergies = choice.allergy_id ? chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id) : chosenAllergies
+      setChosenAllergies(updatedAllergies)
+    } else if (isChecked && choice.ingredient_name !== '') {
+      const uniqueArr = chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id)
+      setChosenAllergies([...uniqueArr, choice])
+    } else {
+      console.log("Something went really wrong")
+    }
+  }
+  
+  // onFormUpdate({
+  //   ...formData,
+  //   allergy_ids: chosenAllergies
+  // })
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
-      allergyFormChoices={allergyFormChoices}
-      onAllergyFormChoices={setAllergyFormChoices}
+      onUpdateAllergies={handleUpdateAllergies}
       allergy={a} 
       key={a.id} 
     />
   ))
-    
-  console.log('//------Allergies array from DB for form structure ------//')
-  console.log(allergiesFromDb)
 
   return (
     <ChoicesBox>
@@ -52,8 +64,6 @@ const ChoicesBox = styled(Box)({
 })
 
 const GridContainer = styled(Grid)({
-  // flexDirection: 'row',
-  // justifyContent: 'space-around',
   display: 'inline-flex',
   flexWrap: 'wrap'
 })
