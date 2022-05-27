@@ -4,6 +4,7 @@ import AllergyRow from './AllergyRow'
 
 const AllergyForm = ({ chosenAllergies, onChosenAllergies }) => {
   const [allergiesFromDb, setAllergiesFromDb] = useState([])
+  
   useEffect(() => {
     fetch('http://localhost:9292/allergies')
     .then(res => res.json())
@@ -22,6 +23,7 @@ const AllergyForm = ({ chosenAllergies, onChosenAllergies }) => {
       console.log("Don't forget to choose an ingredient!")
     }
   }
+  console.log("chosenAllergies: ", chosenAllergies)
   
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 

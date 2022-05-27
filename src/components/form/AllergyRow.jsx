@@ -9,6 +9,7 @@ const AllergyRow = ({ allergy, onUpdateAllergies }) => {
     allergy_id: allergy.id,
     ingredient_name: ""
   })
+  
 
   const filteredArr = removeDuplicates(allergy.ingredients)
   const ingredientsList = filteredArr.map(ingredient => (

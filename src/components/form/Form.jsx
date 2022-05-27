@@ -4,6 +4,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AllergyForm from './AllergyForm'
 import DishForm from './DishForm'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { changeKeyNames } from '../../functions/arrayHelpers';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -12,23 +13,29 @@ const Form = () => {
     price: 0,
     allergy_ids: []
   })
-  const [chosenAllergies, setChosenAllergies] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
   
   useEffect(() => {
     let updateObj = location.state
+    const ingredientsArr = updateObj.ingredients
     if (updateObj !== null) {
+      const allergies = changeKeyNames(ingredientsArr)
+      console.log("Allergies after using changeKeyNames: ", allergies)
       setFormData({
         name: updateObj.name,
         description: updateObj.description,
-        price: updateObj.price
+        price: updateObj.price,
+        allergy_ids: allergies
       })
     }
   }, [location.state])
+  console.log("FormData from Form: ", formData)
+
+console.log("location.state: ", location.state)
+console.log("formData: ", formData)
 
   const updateAllergies = (choicesArr) => {
-    setChosenAllergies(choicesArr)
     setFormData({
       ...formData,
       allergy_ids: choicesArr
@@ -62,9 +69,20 @@ const Form = () => {
       <BackBtn color="secondary" onClick={() => navigate('/')}>
         <ArrowBackIosNewIcon />
       </BackBtn>
-      <FormBox component="form" noValidate autoComplete="off" onSubmit={e => handleSubmit(e)}>
-        <DishForm formData={formData} onFormUpdate={setFormData} />
-        <AllergyForm chosenAllergies={chosenAllergies} onChosenAllergies={updateAllergies} />
+      <FormBox 
+        component="form" 
+        noValidate 
+        autoComplete="off" 
+        onSubmit={e => handleSubmit(e)}
+      >
+        <DishForm 
+          formData={formData} 
+          onFormUpdate={setFormData} 
+        />
+        <AllergyForm 
+          chosenAllergies={formData.allergy_ids} 
+          onChosenAllergies={updateAllergies} 
+        />
         <Button type="submit" >Submit</Button>
       </FormBox>
     
@@ -92,3 +110,6 @@ const BackBtn = styled(Fab)({
   backgroundColor: 'orange',
   color: '#000'
 })
+
+
+
