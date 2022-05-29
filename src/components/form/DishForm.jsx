@@ -4,8 +4,6 @@ import { Box, Grid, styled, TextField, FormControl } from '@mui/material'
 const DishForm = ({ formData, onFormUpdate }) => {
 
   const updateForm = (e) => {
-    // onFormUpdate(e.target.value)
-    // console.log(e.target.name)
     const name = e.target.name
     let value = e.target.value
     onFormUpdate({

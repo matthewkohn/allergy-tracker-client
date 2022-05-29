@@ -21,7 +21,7 @@ const DishCard = ({ card, onDelete }) => {
       .then(onDelete(card.id))
       .catch(console.log)
   }
-console.log("Card from DishCard: ", card)
+
   return (
     <FlashCard variant="outlined" onClick={() => setFlip(!flip)}>
       {flip ? <Dish card={card} /> : <Allergy card={card} />}

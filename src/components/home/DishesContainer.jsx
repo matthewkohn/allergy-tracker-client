@@ -14,7 +14,6 @@ const DishesContainer = () => {
       .then(res => res.json())
       .then(data => {
         const formatted = formatData(data)
-        console.log("using formatData function: ", formatted)
         setFlashcards(formatted)
       })
   }, [])

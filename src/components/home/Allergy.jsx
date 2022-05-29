@@ -2,7 +2,6 @@ import React from 'react'
 import { CardActionArea, CardContent, Typography } from '@mui/material'
 
 const Allergy = ({ card }) => {
-  console.log("card from Allergy: ", card)
   const allergiesArr = card.allergy_ids
   let allergiesList = 'none'
 
