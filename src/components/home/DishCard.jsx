@@ -6,7 +6,7 @@ import Dish from './Dish'
 import Allergy from './Allergy'
 import { useNavigate } from 'react-router-dom';
 
-const DishCard = ({ card, onUpdate }) => {
+const DishCard = ({ card, onDelete }) => {
   const [flip, setFlip] = useState(true)
   const navigate = useNavigate()
 
@@ -18,10 +18,10 @@ const DishCard = ({ card, onUpdate }) => {
       }
     })
       .then(res => res.json())
-      .then(onUpdate(card.id))
+      .then(onDelete(card.id))
       .catch(console.log)
   }
-
+console.log("Card from DishCard: ", card)
   return (
     <FlashCard variant="outlined" onClick={() => setFlip(!flip)}>
       {flip ? <Dish card={card} /> : <Allergy card={card} />}

@@ -1,17 +1,14 @@
 import React from 'react'
 import { CardActionArea, CardContent, Typography } from '@mui/material'
 
-const Allergy = ({card}) => {
-
+const Allergy = ({ card }) => {
+  console.log("card from Allergy: ", card)
+  const allergiesArr = card.allergy_ids
   let allergiesList = 'none'
-  let ingredientsList = 'none'
 
-  if (card.allergies.length > 0) {
-    allergiesList = card.allergies.map(a => 
-      <li key={a.id} >{a.name}</li>
-    )
-    ingredientsList = card.ingredients.map(i =>
-      <li key={i.id}>{i.name}</li>
+  if (allergiesArr.length > 0) {
+    allergiesList = allergiesArr.map(a => 
+      <li key={a.allergy_id} >{a.allergy_name} from {a.ingredient_name}</li>
     )
   } 
 
@@ -20,10 +17,9 @@ const Allergy = ({card}) => {
       <CardContent>
         <Typography gutterBottom variant="h5">{card.name}</Typography>
         <Typography gutterBottom variant="subtitle1">Allergies:</Typography>
-        {allergiesList}
-        <br/>
-        <Typography gutterBottom variant="subtitle1">Guilty Ingredients:</Typography>
-        {ingredientsList}
+        <ul>
+          {allergiesList}
+        </ul>
       </CardContent>
     </CardActionArea>
     )

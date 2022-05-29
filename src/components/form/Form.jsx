@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Fab, styled } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AllergyForm from './AllergyForm'
 import DishForm from './DishForm'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { changeKeyNames } from '../../functions/arrayHelpers';
+// import { changeKeyNames } from '../../functions/arrayHelpers';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -16,21 +17,21 @@ const Form = () => {
   const navigate = useNavigate()
   const location = useLocation()
   
-  useEffect(() => {
-    let updateObj = location.state
-    const ingredientsArr = updateObj.ingredients
-    if (updateObj !== null) {
-      const allergies = changeKeyNames(ingredientsArr)
-      console.log("Allergies after using changeKeyNames: ", allergies)
-      setFormData({
-        name: updateObj.name,
-        description: updateObj.description,
-        price: updateObj.price,
-        allergy_ids: allergies
-      })
-    }
-  }, [location.state])
-  console.log("FormData from Form: ", formData)
+  // useEffect(() => {
+  //   let updateObj = location.state
+  //   const ingredientsArr = updateObj.ingredients
+  //   if (updateObj !== null) {
+  //     const allergies = changeKeyNames(ingredientsArr)
+  //     console.log("Allergies after using changeKeyNames: ", allergies)
+  //     setFormData({
+  //       name: updateObj.name,
+  //       description: updateObj.description,
+  //       price: updateObj.price,
+  //       allergy_ids: allergies
+  //     })
+  //   }
+  // }, [location.state])
+  // console.log("FormData from Form: ", formData)
 
 console.log("location.state: ", location.state)
 console.log("formData: ", formData)
