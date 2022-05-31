@@ -5,14 +5,17 @@ import { AllergyContext } from '../../context/allergyDbContext'
 
 const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
   const [allergiesFromDb] = useContext(AllergyContext)
-  console.log("AllergiesFromDB: ", allergiesFromDb)
+
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
-      chosenAllergiesArray={chosenAllergies}
-      allergy={a} 
+      allergyJsxData={a} 
       key={a.id} 
     />
   ))
+
+  // preloaded = location state (either null or a copy of {formData})
+  // chosenAllergies = formData.allergy_ids
+  // updateAllergies = setFormData(...formData, allergy_ids: )
 
   // const handleAllergyChoices = (isChecked, choice) => {
   //   if (isChecked === false && choice.ingredient_name) {

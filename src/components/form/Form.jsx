@@ -76,7 +76,9 @@ console.log("formData: ", formData)
             updateAllergies={updateAllergies} 
           />
         </AllergyProvider>
-        <Button type="submit" >Submit</Button>
+        <Button type="submit" >
+          {location.state ? "Update" : "Submit" }
+        </Button>
       </FormBox>
     
     </>
