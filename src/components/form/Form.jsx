@@ -1,10 +1,11 @@
-// import React, { useEffect, useState } from 'react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+// import React, { useState } from 'react'
 import { Box, Button, Fab, styled } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AllergyForm from './AllergyForm'
 import DishForm from './DishForm'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { AllergyProvider } from '../../context/allergyDbContext';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,11 @@ const Form = () => {
   const navigate = useNavigate()
   const location = useLocation()
   
+  useEffect(() => {
+    if (location.state !== null) {
+      setFormData(location.state)
+    }
+  }, [location])
 
 console.log("location.state: ", location.state)
 console.log("formData: ", formData)
@@ -64,10 +70,12 @@ console.log("formData: ", formData)
           formData={formData} 
           onFormUpdate={setFormData} 
         />
-        <AllergyForm 
-          chosenAllergies={formData.allergy_ids} 
-          onChosenAllergies={updateAllergies} 
-        />
+        <AllergyProvider>
+          <AllergyForm 
+            chosenAllergies={formData.allergy_ids} 
+            updateAllergies={updateAllergies} 
+          />
+        </AllergyProvider>
         <Button type="submit" >Submit</Button>
       </FormBox>
     

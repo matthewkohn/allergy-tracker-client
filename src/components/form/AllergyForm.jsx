@@ -1,37 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { Box, FormGroup, Grid, styled, Typography } from '@mui/material'
 import AllergyRow from './AllergyRow'
+import { AllergyContext } from '../../context/allergyDbContext'
 
-const AllergyForm = ({ chosenAllergies, onChosenAllergies }) => {
-  const [allergiesFromDb, setAllergiesFromDb] = useState([])
-  useEffect(() => {
-    fetch('http://localhost:9292/allergies')
-    .then(res => res.json())
-    .then(setAllergiesFromDb)
-    .catch(console.log)
-  }, [])
-
-  const handleUpdateAllergies = (isChecked, choice) => {
-    if (isChecked === false && choice.ingredient_name) {
-      const updatedAllergies = choice.allergy_id ? chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id) : chosenAllergies
-      onChosenAllergies(updatedAllergies)
-    } else if (isChecked && choice.ingredient_name !== '') {
-      const uniqueArr = chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id)
-      onChosenAllergies([...uniqueArr, choice])
-    } else {
-      console.log("Don't forget to choose an ingredient!")
-    }
-  }
-  console.log("chosenAllergies: ", chosenAllergies)
-  
+const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
+  const [allergiesFromDb] = useContext(AllergyContext)
+  console.log("AllergiesFromDB: ", allergiesFromDb)
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
-      onUpdateAllergies={handleUpdateAllergies}
       chosenAllergiesArray={chosenAllergies}
       allergy={a} 
       key={a.id} 
     />
   ))
+
+  // const handleAllergyChoices = (isChecked, choice) => {
+  //   if (isChecked === false && choice.ingredient_name) {
+  //     const updatedAllergies = choice.allergy_id ? chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id) : chosenAllergies
+  //     updateAllergies(updatedAllergies)
+  //   } else if (isChecked && choice.ingredient_name !== '') {
+  //     const uniqueArr = chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id)
+  //     updateAllergies([...uniqueArr, choice])
+  //   } else {
+  //     console.log("Don't forget to choose an ingredient!")
+  //   }
+  // }
+  console.log("chosenAllergies: ", chosenAllergies)
+  
 
   return (
     <ChoicesBox>
