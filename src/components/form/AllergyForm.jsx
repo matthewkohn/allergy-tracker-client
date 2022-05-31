@@ -6,30 +6,30 @@ import { AllergyContext } from '../../context/allergyDbContext'
 const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
   const [allergiesFromDb] = useContext(AllergyContext)
 
+  
+  // chosenAllergies = formData.allergy_ids
+  // updateAllergies = setFormData(...formData, allergy_ids: )
+  
+  const handleAllergyChoices = (isChecked, choice) => {
+    if (isChecked === false && choice.ingredient_name) {
+      const updatedAllergies = choice.allergy_id ? chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id) : chosenAllergies
+      updateAllergies(updatedAllergies)
+    } else if (isChecked && choice.ingredient_name !== '') {
+      const uniqueArr = chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id)
+      updateAllergies([...uniqueArr, choice])
+    } else {
+      console.log("Don't forget to choose an ingredient!")
+    }
+  }
+  console.log("chosenAllergies: ", chosenAllergies)
+  
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
-      allergyJsxData={a} 
+      allergyJsxData={a}
+      onUpdateAllergies={handleAllergyChoices}
       key={a.id} 
     />
   ))
-
-  // preloaded = location state (either null or a copy of {formData})
-  // chosenAllergies = formData.allergy_ids
-  // updateAllergies = setFormData(...formData, allergy_ids: )
-
-  // const handleAllergyChoices = (isChecked, choice) => {
-  //   if (isChecked === false && choice.ingredient_name) {
-  //     const updatedAllergies = choice.allergy_id ? chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id) : chosenAllergies
-  //     updateAllergies(updatedAllergies)
-  //   } else if (isChecked && choice.ingredient_name !== '') {
-  //     const uniqueArr = chosenAllergies.filter(a => a.allergy_id !== choice.allergy_id)
-  //     updateAllergies([...uniqueArr, choice])
-  //   } else {
-  //     console.log("Don't forget to choose an ingredient!")
-  //   }
-  // }
-  console.log("chosenAllergies: ", chosenAllergies)
-  
 
   return (
     <ChoicesBox>

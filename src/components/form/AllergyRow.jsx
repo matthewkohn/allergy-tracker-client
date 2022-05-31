@@ -4,7 +4,7 @@ import { removeDuplicates } from '../../functions/arrayHelpers'
 import { useLocation } from 'react-router-dom'
 
 
-const AllergyRow = ({ allergyJsxData }) => {
+const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
   const [isChecked, setIsChecked] = useState(false)
   const [choice, setChoice] = useState({
     allergy_id: allergyJsxData.id,
@@ -26,38 +26,34 @@ const AllergyRow = ({ allergyJsxData }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  // console.log("chosenAllergyArray from AllergyRow: ", chosenAllergiesArray)
-  // need to update isChecked and choice based on what exists inside chosenAllergies
-  
-    //   const previousIngredient = chosenAllergiesArray.find()
-    //   setIsChecked(!checked)
-    //   setChoice({
-    //     ...choice,
-    //     ingredient_name: 
-    //   })
-    // })
-  // }, [])
 
   const uniqueIngredients = removeDuplicates(allergyJsxData.ingredients)
   const ingredientsList = uniqueIngredients.map(ingredient => (
     <MenuItem value={ingredient.name} key={ingredient.id} >{ingredient.name}</MenuItem>
   ))
 
-  // const handleChecked = (e) => {
-  //   const value = e.target.checked
-  //   setIsChecked(value)
-  //   onUpdateAllergies(!isChecked, choice)
-  // }
+  const handleChecked = (e) => {
+    const value = e.target.checked
+    setIsChecked(value)
+    if (value === false) {
+      const disabledChoice = {
+        ...choice,
+        ingredient_name: ""
+      }
+      setChoice(disabledChoice)
+    }
+    onUpdateAllergies(!isChecked, choice)
+  }
 
-  // const handleChoice = (e) => {
-  //   const value = e.target.value
-  //   const updatedChoice = {
-  //     ...choice,
-  //     ingredient_name: value
-  //   }
-  //   setChoice(updatedChoice)
-  //   onUpdateAllergies(isChecked, updatedChoice)
-  // }
+  const handleChoice = (e) => {
+    const value = e.target.value
+    const updatedChoice = {
+      ...choice,
+      ingredient_name: value
+    }
+    setChoice(updatedChoice)
+    onUpdateAllergies(isChecked, updatedChoice)
+  }
 
   return (
     <AllergyGridItem item>
@@ -66,7 +62,7 @@ const AllergyRow = ({ allergyJsxData }) => {
           control={ 
             <Checkbox 
               checked={isChecked}
-              // onChange={(e) => handleChecked(e)}
+              onChange={(e) => handleChecked(e)}
             /> 
           } 
           label={allergyJsxData.name} 
@@ -76,9 +72,9 @@ const AllergyRow = ({ allergyJsxData }) => {
             <Select 
             displayEmpty
             value={choice.ingredient_name}
-              // onChange={(e) => handleChoice(e)}
+              onChange={(e) => handleChoice(e)}
               autoWidth
-              // disabled={!isChecked}      
+              disabled={!isChecked}      
             >
               <MenuItem disabled value=""><em>Ingredients</em></MenuItem>
               {ingredientsList}
