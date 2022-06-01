@@ -3,7 +3,6 @@ import { Checkbox, FormControlLabel, FormGroup, Grid, MenuItem, Select, styled }
 import { removeDuplicates } from '../../functions/arrayHelpers'
 import { useLocation } from 'react-router-dom'
 
-
 const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
   const [isChecked, setIsChecked] = useState(false)
   const [choice, setChoice] = useState({

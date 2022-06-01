@@ -63,8 +63,9 @@ export default DishForm
 const DishBox = styled(Box)({
   padding: '10px',
   margin: '5px',
-  border: '2px solid red',
-  borderRadius: '5px'
+  height: '200px'
+  // border: '2px solid red',
+  // borderRadius: '5px'
 })
 
 const InputField = styled(TextField)({

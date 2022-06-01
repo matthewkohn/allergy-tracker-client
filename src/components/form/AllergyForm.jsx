@@ -5,10 +5,6 @@ import { AllergyContext } from '../../context/allergyDbContext'
 
 const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
   const [allergiesFromDb] = useContext(AllergyContext)
-
-  
-  // chosenAllergies = formData.allergy_ids
-  // updateAllergies = setFormData(...formData, allergy_ids: )
   
   const handleAllergyChoices = (isChecked, choice) => {
     if (isChecked === false && choice.ingredient_name) {
@@ -21,7 +17,6 @@ const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
       console.log("Don't forget to choose an ingredient!")
     }
   }
-  console.log("chosenAllergies: ", chosenAllergies)
   
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
@@ -48,9 +43,9 @@ export default AllergyForm
 
 const ChoicesBox = styled(Box)({
   padding: '30px',
-  margin: '5px',
-  border: '2px solid red',
-  borderRadius: '5px'
+  margin: '5px'
+  // border: '2px solid red',
+  // borderRadius: '5px'
 })
 
 const GridContainer = styled(Grid)({

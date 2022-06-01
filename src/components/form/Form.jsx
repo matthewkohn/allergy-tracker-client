@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import React, { useState } from 'react'
 import { Box, Button, Fab, styled } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AllergyForm from './AllergyForm'
@@ -23,7 +22,6 @@ const Form = () => {
     }
   }, [location])
 
-console.log("location.state: ", location.state)
 console.log("formData: ", formData)
 
   const updateAllergies = (choicesArr) => {
@@ -35,8 +33,18 @@ console.log("formData: ", formData)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     if (location.pathname === '/update') {
-      console.log('I should PATCH this')
+      fetch(`http://localhost:9292/dishes/${formData.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(r => r.json())
+      .then(console.log)
+      .catch(console.log)
     } else if (location.pathname === '/new') {
       fetch("http://localhost:9292/dishes", {
         method: "POST",
@@ -47,11 +55,11 @@ console.log("formData: ", formData)
       })
       .then(r => r.json())
       .then(console.log)
+      .catch(console.log)
     } else {
       console.log("We've got a small problem...")
     }
 
-    console.log("You did it!")
     navigate('/')
   }
 
@@ -76,9 +84,9 @@ console.log("formData: ", formData)
             updateAllergies={updateAllergies} 
           />
         </AllergyProvider>
-        <Button type="submit" >
+        <SubmitBtn variant="contained" type="submit" color="success">
           {location.state ? "Update" : "Submit" }
-        </Button>
+        </SubmitBtn>
       </FormBox>
     
     </>
@@ -91,7 +99,8 @@ export default Form
 const FormBox = styled(Box)({
   margin: '100px',
   padding: '10px',
-  border: '10px solid black',
+  border: '10px solid lightgrey',
+  borderRadius: '5px',
   minWidth: '80%',
   height: '90%'
 })
@@ -106,5 +115,8 @@ const BackBtn = styled(Fab)({
   color: '#000'
 })
 
-
+const SubmitBtn = styled(Button)({
+  width: '100%',
+  padding: '20px'
+})
 
