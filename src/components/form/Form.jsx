@@ -22,8 +22,6 @@ const Form = () => {
     }
   }, [location])
 
-console.log("formData: ", formData)
-
   const updateAllergies = (choicesArr) => {
     setFormData({
       ...formData,
@@ -88,9 +86,7 @@ console.log("formData: ", formData)
           {location.state ? "Update" : "Submit" }
         </SubmitBtn>
       </FormBox>
-    
     </>
-    
   )
 }
 

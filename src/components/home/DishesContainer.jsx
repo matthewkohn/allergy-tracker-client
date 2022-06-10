@@ -8,7 +8,7 @@ import { formatData } from '../../functions/arrayHelpers';
 const DishesContainer = () => {
   const [flashcards, setFlashcards] = useState([])
   const navigate = useNavigate()
-  console.log("flashcards from DishesContainer: ", flashcards)
+
   useEffect(() => {
     fetch('http://localhost:9292/dishes')
       .then(res => res.json())
