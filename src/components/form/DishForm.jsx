@@ -21,21 +21,25 @@ const DishForm = ({ formData, onFormUpdate }) => {
         <Grid container>
           <Grid item lg={9} md={9} sm={12}>
             <InputField 
+              required
               label="Dish Name" 
               name="name"
-              type="text" 
+              type="text"
+              variant="filled"
               value={formData.name}
               onChange={(e) => updateForm(e)} 
-              required/>
+              />
           </Grid>
           <Grid item lg={3} md={3} sm={12}>
             <InputField 
+              required
               label="Price" 
               name="price"
               type="number"
+              variant="filled"
               value={formData.price}
               onChange={(e) => updateForm(e)} 
-              required/>
+              />
           </Grid>
         </Grid>
         <Grid container>
@@ -44,9 +48,10 @@ const DishForm = ({ formData, onFormUpdate }) => {
               label="Description (200 character max)"
               type="text"
               multiline
-              maxRows={8}
+              maxRows={3}
               maxLength={"200"}
               name="description"
+              variant="filled"
               value={formData.description}
               onChange={(e) => updateForm(e)}
               required
@@ -73,5 +78,6 @@ const InputField = styled(TextField)({
 
 const DescriptionField = styled(TextField)({
   width: '100%',
-  height: '150px'
+  height: '120px',
+  marginTop: '30px'
 })

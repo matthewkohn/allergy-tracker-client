@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardActionArea, CardContent, Typography } from '@mui/material'
+import { CardActionArea, CardContent, styled, Typography } from '@mui/material'
 
 const Allergy = ({ card }) => {
   const allergiesArr = card.allergy_ids
@@ -14,7 +14,7 @@ const Allergy = ({ card }) => {
   return (
     <CardActionArea>
       <CardContent>
-        <Typography gutterBottom variant="h5">{card.name}</Typography>
+        <Header gutterBottom variant="h5">{card.name}</Header>
         <Typography gutterBottom variant="subtitle1">Allergies:</Typography>
         <ul>
           {allergiesList}
@@ -25,3 +25,9 @@ const Allergy = ({ card }) => {
 }
 
 export default Allergy
+
+const Header = styled(Typography)({
+  fontSize: '22px',
+  fontWeight: 'bold'
+})
+

@@ -46,7 +46,8 @@ const FlashCard = styled(Card)({
   margin: '10px 30px',
   padding: '20px',
   width: '200px',
-  height: '300px'
+  height: '300px',
+  backgroundColor: '#f1f1f1'
 })
 
 const CardUpdateDiv = styled(CardActions)({

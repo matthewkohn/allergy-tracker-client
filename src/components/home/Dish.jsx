@@ -6,7 +6,7 @@ const Dish = ({card}) => {
   return (
     <CardActionArea>
       <CardContent>
-        <Typography gutterBottom variant="h5">{card.name}</Typography>
+        <Header gutterBottom variant="h5">{card.name}</Header>
         <Details variant="p">{card.description}</Details>
         <br/><br/>
         <Details variant="subtitle">${card.price}</Details>
@@ -17,9 +17,15 @@ const Dish = ({card}) => {
 
 export default Dish
 
+const Header = styled(Typography)({
+  fontSize: '22px',
+  fontWeight: 'bold'
+})
+
 const Details = styled(Typography)({
   padding: '10px 0',
   overflow: 'auto',
   color: 'grey',
-  lineHeight: '20px'
+  lineHeight: '20px',
+  fontSize: '15px'
 })

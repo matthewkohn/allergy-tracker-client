@@ -28,5 +28,6 @@ const Header = styled(AppBar)({
   padding: '15px',
   textAlign: 'center',
   position: 'fixed',
-  display: 'block'
+  display: 'block',
+  backgroundColor: 'darkgreen'
 })

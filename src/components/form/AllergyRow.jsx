@@ -55,39 +55,51 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
   }
 
   return (
-    <AllergyGridItem item>
+    <AllergyGridContainer container xs={6} md={2.4}>
       <FormGroup>
-        <FormControlLabel 
-          control={ 
-            <Checkbox 
-              checked={isChecked}
-              onChange={(e) => handleChecked(e)}
-            /> 
-          } 
-          label={allergyJsxData.name} 
-        />
-        <FormControlLabel 
-          control={ 
-            <Select 
-            displayEmpty
-            value={choice.ingredient_name}
-              onChange={(e) => handleChoice(e)}
-              autoWidth
-              disabled={!isChecked}      
-            >
-              <MenuItem disabled value=""><em>Ingredients</em></MenuItem>
-              {ingredientsList}
-            </Select> 
-          } 
-          placeholder="true" 
-        />
+        <AllergyGridItem item>
+          <FormControlLabel 
+            control={ 
+              <Checkbox 
+                checked={isChecked}
+                onChange={(e) => handleChecked(e)}
+              /> 
+            } 
+            label={allergyJsxData.name} 
+          />
+        </AllergyGridItem>
+        <AllergyGridItem item>
+          <FormControlLabel 
+            control={ 
+              <Select 
+              displayEmpty
+              value={choice.ingredient_name}
+                onChange={(e) => handleChoice(e)}
+                autoWidth
+                disabled={!isChecked}      
+              >
+                <MenuItem disabled value=""><em>Ingredients</em></MenuItem>
+                {ingredientsList}
+              </Select> 
+            } 
+            placeholder="true" 
+          />
+        </AllergyGridItem>
       </FormGroup>
-    </AllergyGridItem>
+    </AllergyGridContainer>
   )
 }
 
 export default AllergyRow
 
+const AllergyGridContainer = styled(Grid)({
+  width: '20%',
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'row'
+
+})
+
 const AllergyGridItem = styled(Grid)({
-  width: '20%'
+  margin: '4px 0'
 })

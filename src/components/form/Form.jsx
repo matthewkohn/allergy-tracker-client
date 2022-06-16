@@ -98,7 +98,8 @@ const FormBox = styled(Box)({
   border: '10px solid lightgrey',
   borderRadius: '5px',
   minWidth: '80%',
-  height: '90%'
+  height: '90%',
+  width: 'auto'
 })
 
 const BackBtn = styled(Fab)({

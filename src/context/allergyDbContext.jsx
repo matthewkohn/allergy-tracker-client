@@ -4,7 +4,7 @@ const AllergyContext = createContext()
 
 const AllergyProvider = ({ children }) => {
   const [allergiesFromDb, setAllergiesFromDb] = useState([])
-  // console.log("AllergiesFromDB: ", allergiesFromDb)
+
   const value = [allergiesFromDb, setAllergiesFromDb]
 
   useEffect(() => {
