@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Container sx={{maxHeight: '100vh', display: 'flex'}}>
       <Header>
-        <Typography variant="h3">Cliff's Notes for Restaurant Pros</Typography>
+        <Typography variant="h3">Restaurant Food Allergies</Typography>
       </Header>
       <Routes>
         <Route path='/' element={ <DishesContainer /> } />
