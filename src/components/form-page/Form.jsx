@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Box, Button, Fab, styled } from '@mui/material'
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Box, Button, Fab, styled } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import AllergyForm from './AllergyForm'
-import DishForm from './DishForm'
-import { useLocation, useNavigate } from 'react-router-dom'
+import AllergyForm from './AllergyForm';
+import DishForm from './DishForm';
 import { AllergyProvider } from '../../context/allergyDbContext';
+import { dishUrl } from '../../data/urls';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -12,28 +13,28 @@ const Form = () => {
     description: "",
     price: 0,
     allergy_ids: []
-  })
-  const navigate = useNavigate()
-  const location = useLocation()
+  });
+  const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
     if (location.state !== null) {
       setFormData(location.state)
     }
-  }, [location])
+  }, [location]);
 
   const updateAllergies = (choicesArr) => {
     setFormData({
       ...formData,
       allergy_ids: choicesArr
     })
-  }
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (location.pathname === '/update') {
-      fetch(`http://localhost:9292/dishes/${formData.id}`, {
+      fetch(dishUrl + '/' + formData.id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +45,7 @@ const Form = () => {
       .then(console.log)
       .catch(console.log)
     } else if (location.pathname === '/new') {
-      fetch("http://localhost:9292/dishes", {
+      fetch(dishUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,8 +59,8 @@ const Form = () => {
       console.log("We've got a small problem...")
     }
 
-    navigate('/')
-  }
+    navigate('/');
+  };
 
   return (
     <>
@@ -90,7 +91,7 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Form;
 
 const FormBox = styled(Box)({
   margin: '100px',
@@ -100,7 +101,7 @@ const FormBox = styled(Box)({
   minWidth: '80%',
   height: '90%',
   width: 'auto'
-})
+});
 
 const BackBtn = styled(Fab)({
   position: 'fixed',
@@ -110,10 +111,10 @@ const BackBtn = styled(Fab)({
   height: '50px',
   backgroundColor: 'orange',
   color: '#000'
-})
+});
 
 const SubmitBtn = styled(Button)({
   width: '100%',
   padding: '20px'
-})
+});
 

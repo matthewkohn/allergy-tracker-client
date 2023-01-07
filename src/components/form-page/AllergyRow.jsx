@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { Checkbox, FormControlLabel, FormGroup, Grid, MenuItem, Select, styled } from '@mui/material'
-import { removeDuplicates } from '../../functions/arrayHelpers'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Checkbox, FormControlLabel, FormGroup, Grid, MenuItem, Select, styled } from '@mui/material';
+// import { removeDuplicates } from '../../functions/arrayHelpers'
+import { useLocation } from 'react-router-dom';
 
 const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
   const [choice, setChoice] = useState({
     allergy_id: allergyJsxData.id,
     ingredient_name: ""
-  })
-  const location = useLocation()
+  });
+  const location = useLocation();
+
+  console.log("AllergyRow props: .........................")
+  console.log("allergyJsxData props: ", allergyJsxData)
+  console.log("choice state: ", choice)
+  console.log("location: ", location)
   
   useEffect(() => {
     if (location.state !== null) {
@@ -24,12 +29,13 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  const uniqueIngredients = removeDuplicates(allergyJsxData.ingredients)
-  const ingredientsList = uniqueIngredients.map(ingredient => (
+  // const uniqueIngredients = removeDuplicates(allergyJsxData.ingredients)
+  // const ingredientsList = uniqueIngredients.map(ingredient => (
+  const ingredientsList = allergyJsxData.ingredients.map(ingredient => (
     <MenuItem value={ingredient.name} key={ingredient.id} >{ingredient.name}</MenuItem>
-  ))
+  ));
 
   const handleChecked = (e) => {
     const value = e.target.checked
@@ -42,7 +48,7 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
       setChoice(disabledChoice)
     }
     onUpdateAllergies(!isChecked, choice)
-  }
+  };
 
   const handleChoice = (e) => {
     const value = e.target.value
@@ -52,7 +58,7 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
     }
     setChoice(updatedChoice)
     onUpdateAllergies(isChecked, updatedChoice)
-  }
+  };
 
   return (
     <AllergyGridContainer container xs={6} md={2.4}>
@@ -90,7 +96,7 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
   )
 }
 
-export default AllergyRow
+export default AllergyRow;
 
 const AllergyGridContainer = styled(Grid)({
   width: '20%',
@@ -98,8 +104,8 @@ const AllergyGridContainer = styled(Grid)({
   justifyContent: 'center',
   flexDirection: 'row'
 
-})
+});
 
 const AllergyGridItem = styled(Grid)({
   margin: '4px 0'
-})
+});

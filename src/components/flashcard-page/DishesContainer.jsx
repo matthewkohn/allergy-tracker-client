@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import DishCard from './DishCard'
-import { Container, Fab, styled } from '@mui/material'
+import React, { useEffect, useState } from 'react';
+import DishCard from './DishCard';
+import { Container, Fab, styled } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { formatData } from '../../functions/arrayHelpers';
+import { dishUrl } from '../../data/urls';
 
 const DishesContainer = () => {
-  const [flashcards, setFlashcards] = useState([])
-  const navigate = useNavigate()
+  const [flashcards, setFlashcards] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:9292/dishes')
+    fetch(dishUrl)
       .then(res => res.json())
       .then(data => {
         const formatted = formatData(data)
         setFlashcards(formatted)
       })
-  }, [])
+  }, []);
   
+  console.log("flashcards state in DishesContainer: ", flashcards)
+
   const handleDelete = (deletedId) => {
     const updatedCards = flashcards.filter((card => card.id !== deletedId))
     setFlashcards(updatedCards)
-  }
+  };
 
-  //refactor
   const flashcardList = flashcards.map(card => {
     return <DishCard card={card} onDelete={handleDelete} key={card.id} />
-  })
+  });
 
   return (
     <DishContainer >
@@ -38,7 +40,7 @@ const DishesContainer = () => {
   )
 }
 
-export default DishesContainer
+export default DishesContainer;
 
 const DishContainer = styled(Container)({
   marginTop: '100px',
@@ -46,7 +48,7 @@ const DishContainer = styled(Container)({
   flexDirection: 'row',
   flexWrap: 'wrap',
   justifyContent: 'space-around'
-})
+});
 
 const AddBtn = styled(Fab)({
   position: 'fixed',
@@ -55,4 +57,4 @@ const AddBtn = styled(Fab)({
   height: '70px',
   backgroundColor: 'lightgreen',
   color: '#000'
-})
+});

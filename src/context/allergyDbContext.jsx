@@ -1,18 +1,19 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react';
+import { allergyUrl } from '../data/urls';
 
-const AllergyContext = createContext()
+const AllergyContext = createContext();
 
 const AllergyProvider = ({ children }) => {
-  const [allergiesFromDb, setAllergiesFromDb] = useState([])
+  const [allergiesFromDb, setAllergiesFromDb] = useState([]);
 
-  const value = [allergiesFromDb, setAllergiesFromDb]
+  const value = [allergiesFromDb, setAllergiesFromDb];
 
   useEffect(() => {
-    fetch('http://localhost:9292/allergies')
+    fetch(allergyUrl)
     .then(res => res.json())
     .then(setAllergiesFromDb)
     .catch(console.log)
-  }, [])
+  }, []);
 
   return (
     <AllergyContext.Provider value={ value } >
@@ -21,4 +22,4 @@ const AllergyProvider = ({ children }) => {
   )
 }
 
-export { AllergyContext, AllergyProvider }
+export { AllergyContext, AllergyProvider };

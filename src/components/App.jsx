@@ -1,6 +1,6 @@
 import React from 'react';
-import DishesContainer from './home/DishesContainer';
-import Form from './form/Form';
+import DishesContainer from './flashcard-page/DishesContainer';
+import Form from './form-page/Form';
 import { Routes, Route } from 'react-router-dom';
 import { AppBar, Container, styled, Typography } from '@mui/material';
 
@@ -32,5 +32,5 @@ const Header = styled(AppBar)({
 
 const Title = styled(Typography)({
   fontSize: '40px',
-  color: '#ddc',
+  color: 'lightgreen',
 });

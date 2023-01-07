@@ -1,6 +1,6 @@
-import React from 'react'
-import { CardActionArea, CardContent, Typography } from '@mui/material'
-import { styled } from '@mui/material'
+import React from 'react';
+import { CardActionArea, CardContent, Typography } from '@mui/material';
+import { styled } from '@mui/material';
 
 const Dish = ({card}) => {
   return (
@@ -15,12 +15,12 @@ const Dish = ({card}) => {
   )
 }
 
-export default Dish
+export default Dish;
 
 const Header = styled(Typography)({
   fontSize: '22px',
   fontWeight: 'bold'
-})
+});
 
 const Details = styled(Typography)({
   padding: '10px 0',
@@ -28,4 +28,4 @@ const Details = styled(Typography)({
   color: 'grey',
   lineHeight: '20px',
   fontSize: '15px'
-})
+});

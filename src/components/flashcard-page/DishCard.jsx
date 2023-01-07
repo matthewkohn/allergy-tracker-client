@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
-import { Card, CardActions, IconButton, styled } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-import Dish from './Dish'
-import Allergy from './Allergy'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Card, CardActions, IconButton, styled } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Dish from './Dish';
+import Allergy from './Allergy';
+import { dishUrl } from '../../data/urls';
 
 const DishCard = ({ card, onDelete }) => {
-  const [flip, setFlip] = useState(true)
-  const navigate = useNavigate()
+  const [flip, setFlip] = useState(true);
+  const navigate = useNavigate();
 
   const handleDelete = () => {
-    fetch(`http://localhost:9292/dishes/${card.id}`, {
+    fetch(dishUrl + '/' + card.id, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
@@ -20,7 +21,7 @@ const DishCard = ({ card, onDelete }) => {
       .then(res => res.json())
       .then(onDelete(card.id))
       .catch(console.log)
-  }
+  };
 
   return (
     <FlashCard variant="outlined" onClick={() => setFlip(!flip)}>
@@ -37,7 +38,7 @@ const DishCard = ({ card, onDelete }) => {
   )
 }
 
-export default DishCard
+export default DishCard;
 
 const FlashCard = styled(Card)({
   display: 'flex',
@@ -48,8 +49,8 @@ const FlashCard = styled(Card)({
   width: '200px',
   height: '300px',
   backgroundColor: '#f1f1f1'
-})
+});
 
 const CardUpdateDiv = styled(CardActions)({
   position: 'relative'
-})
+});

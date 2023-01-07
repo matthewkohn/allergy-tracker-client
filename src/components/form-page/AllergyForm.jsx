@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { Box, FormGroup, Grid, styled, Typography } from '@mui/material'
-import AllergyRow from './AllergyRow'
-import { AllergyContext } from '../../context/allergyDbContext'
+import React, { useContext } from 'react';
+import { Box, FormGroup, Grid, styled, Typography } from '@mui/material';
+import AllergyRow from './AllergyRow';
+import { AllergyContext } from '../../context/allergyDbContext';
 
 const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
-  const [allergiesFromDb] = useContext(AllergyContext)
+  const [allergiesFromDb] = useContext(AllergyContext);
   
   const handleAllergyChoices = (isChecked, choice) => {
     if (isChecked === false && choice.ingredient_name) {
@@ -16,7 +16,7 @@ const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
     } else {
       console.log("Don't forget to choose an ingredient!")
     }
-  }
+  };
   
   const allergiesList = allergiesFromDb.map((a) => (
     <AllergyRow 
@@ -24,7 +24,7 @@ const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
       onUpdateAllergies={handleAllergyChoices}
       key={a.id} 
     />
-  ))
+  ));
 
   return (
     <ChoicesBox>
@@ -39,17 +39,15 @@ const AllergyForm = ({ chosenAllergies, updateAllergies }) => {
   )
 }
 
-export default AllergyForm
+export default AllergyForm;
 
 const ChoicesBox = styled(Box)({
   padding: '30px',
   margin: '5px'
-  // border: '2px solid red',
-  // borderRadius: '5px'
-})
+});
 
 const GridContainer = styled(Grid)({
   display: 'inline-flex',
   flexWrap: 'wrap'
-})
+});
 

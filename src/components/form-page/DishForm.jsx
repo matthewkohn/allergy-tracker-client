@@ -1,16 +1,16 @@
-import React from 'react'
-import { Box, Grid, styled, TextField, FormControl } from '@mui/material'
+import React from 'react';
+import { Box, Grid, styled, TextField, FormControl } from '@mui/material';
 
 const DishForm = ({ formData, onFormUpdate }) => {
 
   const updateForm = (e) => {
-    const name = e.target.name
-    let value = e.target.value
+    const name = e.target.name;
+    let value = e.target.value;
     onFormUpdate({
       ...formData,
       [name]: value
-    })
-  }
+    });
+  };
 
   return (
     <DishBox>
@@ -63,21 +63,21 @@ const DishForm = ({ formData, onFormUpdate }) => {
   )
 }
 
-export default DishForm
+export default DishForm;
 
 const DishBox = styled(Box)({
   padding: '10px',
   margin: '5px',
   height: '200px'
-})
+});
 
 const InputField = styled(TextField)({
   width: '98%', 
   margin: '0 0 10px'
-})
+});
 
 const DescriptionField = styled(TextField)({
   width: '100%',
   height: '120px',
   marginTop: '30px'
-})
+});
