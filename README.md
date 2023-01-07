@@ -2,11 +2,17 @@
 This is the backend for an allergy tracker app for Flatiron School to showcase skills in Ruby and Active Record.
 
 If you haven't already, follow directions for the [Backend](https://github.com/matthewkohn/phase-3-sinatra-react-project/tree/dish_allergy_server).
+
 ## Requirements
 [node v17.1.0]('https://nodejs.org/en/download/')
 npm v8.9.0
 
+## Media
+View video walkthrough [here](https://youtu.be/CfGinx93U7k)
+
 ## How to use
+Allergy Tracker client is configured to run locally at http://localhost:3000.
+
 Fork and clone this repo, then run the following to install dependencies:
 ```
 npm install
