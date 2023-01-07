@@ -7,12 +7,12 @@ import DishForm from './DishForm';
 import { AllergyProvider } from '../../context/allergyDbContext';
 import { dishUrl } from '../../data/urls';
 
-const Form = () => {
+const FormContainer = () => {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     price: 0,
-    allergy_ids: []
+    allergy_data: []
   });
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,10 +23,12 @@ const Form = () => {
     }
   }, [location]);
 
+  console.log("formData from Form Container: ", formData)
+
   const updateAllergies = (choicesArr) => {
     setFormData({
       ...formData,
-      allergy_ids: choicesArr
+      allergy_data: choicesArr
     })
   };
 
@@ -79,7 +81,7 @@ const Form = () => {
         />
         <AllergyProvider>
           <AllergyForm 
-            chosenAllergies={formData.allergy_ids} 
+            chosenAllergies={formData.allergy_data} 
             updateAllergies={updateAllergies} 
           />
         </AllergyProvider>
@@ -91,7 +93,7 @@ const Form = () => {
   )
 }
 
-export default Form;
+export default FormContainer;
 
 const FormBox = styled(Box)({
   margin: '100px',

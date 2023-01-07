@@ -1,6 +1,6 @@
 import React from 'react';
 import DishesContainer from './flashcard-page/DishesContainer';
-import Form from './form-page/Form';
+import Form from './form-page/FormContainer';
 import { Routes, Route } from 'react-router-dom';
 import { AppBar, Container, styled, Typography } from '@mui/material';
 
