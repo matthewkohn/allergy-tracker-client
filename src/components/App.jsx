@@ -1,17 +1,14 @@
-import React from 'react'
-import DishesContainer from './home/DishesContainer'
-import Form from './form/Form'
-
-import { Routes, Route } from 'react-router-dom'
-import { AppBar, Container, styled, Typography } from '@mui/material'
+import React from 'react';
+import DishesContainer from './home/DishesContainer';
+import Form from './form/Form';
+import { Routes, Route } from 'react-router-dom';
+import { AppBar, Container, styled, Typography } from '@mui/material';
 
 const App = () => {
-
-
   return (
-    <Container sx={{maxHeight: '100vh', display: 'flex'}}>
+    <Container>
       <Header>
-        <Typography variant="h3">Restaurant Food Allergies</Typography>
+        <Title variant="h1">Restaurant Food Allergies</Title>
       </Header>
       <Routes>
         <Route path='/' element={ <DishesContainer /> } />
@@ -20,14 +17,20 @@ const App = () => {
       </Routes>
     </Container>
   )
-}
+};
 
-export default App
+export default App;
+
 
 const Header = styled(AppBar)({
-  padding: '15px',
-  textAlign: 'center',
+  padding: '8px 0 8px 20px',
+  textAlign: 'left',
   position: 'fixed',
   display: 'block',
   backgroundColor: 'darkgreen'
-})
+});
+
+const Title = styled(Typography)({
+  fontSize: '40px',
+  color: '#ddc',
+});
