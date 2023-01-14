@@ -1,7 +1,7 @@
 # Allergy Tracker Client
-This is the backend for an allergy tracker app for Flatiron School to showcase skills in Ruby and Active Record.
+This is the frontend for an allergy tracker app, built with React and Material UI.
 
-If you haven't already, follow directions for the [Backend](https://github.com/matthewkohn/phase-3-sinatra-react-project/tree/dish_allergy_server).
+This project relies on its associated server built with Ruby on Rails, ActiveRecord, Sinatra, and SQLite3. The repo for this backend is [here](https://github.com/matthewkohn/allergy-tracker-server). Be sure to follow the instructions to install run the server with this frontend.
 
 ## Requirements
 [node v17.1.0]('https://nodejs.org/en/download/')
