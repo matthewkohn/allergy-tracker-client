@@ -3,7 +3,6 @@ import DishCard from './DishCard';
 import { Container, Fab, styled } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
-import { formatData } from '../../functions/arrayHelpers';
 import { dishUrl } from '../../data/urls';
 
 const DishesContainer = () => {
@@ -13,13 +12,8 @@ const DishesContainer = () => {
   useEffect(() => {
     fetch(dishUrl)
       .then(res => res.json())
-      .then(data => {
-        const formatted = formatData(data)
-        setFlashcards(formatted)
-      })
+      .then(data => setFlashcards(data))
   }, []);
-  
-  console.log("flashcards state in DishesContainer: ", flashcards)
 
   const handleDelete = (deletedId) => {
     const updatedCards = flashcards.filter((card => card.id !== deletedId))
