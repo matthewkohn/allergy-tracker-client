@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import DishCard from './DishCard';
-import { Container, Fab, styled } from '@mui/material';
+import { Box, Container, Fab, styled, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 import { dishUrl } from '../../data/urls';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 
 const DishesContainer = () => {
   const [flashcards, setFlashcards] = useState([]);
@@ -25,11 +27,16 @@ const DishesContainer = () => {
   });
 
   return (
-    <DishContainer >
+    <DishContainer>
       <AddBtn color="secondary" onClick={() => navigate('/new')}>
         <AddIcon />
       </AddBtn>
-      {flashcardList}
+      <Intro variant="h2">
+        <ThumbUpOffAltIcon /> and <ThumbDownOffAltIcon /> indicate whether the allergy is avoidable or not.
+      </Intro>
+      <FlashcardBox>
+        {flashcardList}
+      </FlashcardBox>
     </DishContainer>
   )
 }
@@ -37,11 +44,7 @@ const DishesContainer = () => {
 export default DishesContainer;
 
 const DishContainer = styled(Container)({
-  marginTop: '100px',
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  justifyContent: 'space-around'
+  padding: '0 0 25px',
 });
 
 const AddBtn = styled(Fab)({
@@ -50,5 +53,31 @@ const AddBtn = styled(Fab)({
   width: '70px',
   height: '70px',
   backgroundColor: 'lightgreen',
-  color: '#000'
+  color: '#000',
+  '@media (max-width: 720px)': {
+    width: '30px',
+    height: '30px',
+  },
+  '@media (max-width: 540px)': {
+    top: '65px',
+  },
+});
+
+const Intro = styled(Typography)({
+  fontSize: '32px',
+  color: '#333',
+  textAlign: 'center',
+  padding: '10px 0 25px',
+  '@media (max-width: 1200px)': {
+    fontSize: '20px',
+  },
+  '@media (max-width: 640px)': {
+    fontSize: '16px',
+  },
+});
+
+const FlashcardBox = styled(Box)({
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
 });
