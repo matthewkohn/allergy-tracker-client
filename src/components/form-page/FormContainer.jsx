@@ -12,10 +12,13 @@ const FormContainer = () => {
     name: "",
     description: "",
     price: 0,
-    allergy_data: []
+    dish_allergies: []
   });
   const navigate = useNavigate();
   const location = useLocation();
+  
+  console.log(location.state)
+
   
   useEffect(() => {
     if (location.state !== null) {
@@ -28,7 +31,7 @@ const FormContainer = () => {
   const updateAllergies = (choicesArr) => {
     setFormData({
       ...formData,
-      allergy_data: choicesArr
+      dish_allergies: choicesArr
     })
   };
 
@@ -81,7 +84,7 @@ const FormContainer = () => {
         />
         <AllergyProvider>
           <AllergyForm 
-            chosenAllergies={formData.allergy_data} 
+            chosenAllergies={formData.dish_allergies} 
             updateAllergies={updateAllergies} 
           />
         </AllergyProvider>

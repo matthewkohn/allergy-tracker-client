@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Checkbox, FormControlLabel, FormGroup, Grid, MenuItem, Select, styled } from '@mui/material';
-// import { removeDuplicates } from '../../functions/arrayHelpers'
 import { useLocation } from 'react-router-dom';
 
 const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
@@ -18,8 +17,9 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
   
   useEffect(() => {
     if (location.state !== null) {
-      const preloadedAllergies = location.state.allergy_ids
-      const match = preloadedAllergies.find(a => a.allergy_id === choice.allergy_id)
+      const preloadedAllergies = location.state.dish_allergies
+      const match = preloadedAllergies.find(a => a.id === choice.allergy_id)
+      console.log("MATCH: ", match)
       if (match) {
         setIsChecked(!isChecked)
         setChoice({
@@ -31,8 +31,6 @@ const AllergyRow = ({ allergyJsxData, onUpdateAllergies }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const uniqueIngredients = removeDuplicates(allergyJsxData.ingredients)
-  // const ingredientsList = uniqueIngredients.map(ingredient => (
   const ingredientsList = allergyJsxData.ingredients.map(ingredient => (
     <MenuItem value={ingredient.name} key={ingredient.id} >{ingredient.name}</MenuItem>
   ));

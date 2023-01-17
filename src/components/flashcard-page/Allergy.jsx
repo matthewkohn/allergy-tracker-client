@@ -5,8 +5,6 @@ import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 
 
 const Allergy = ({ allergy }) => {
-
-  console.log("Allergy: ", allergy)
   return (
     <AllergyBox>
       <Typography variant="caption" align="inherit">
@@ -14,7 +12,6 @@ const Allergy = ({ allergy }) => {
       </Typography>
       { allergy.is_omittable ? <ThumbUpOffAltIcon /> : <ThumbDownOffAltIcon /> }
     </AllergyBox>
-    // <li key={a.id} >{a.allergy.name} from {a.ingredient_name}</li>
   )
 }
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import DishCard from './DishCard';
+import { useNavigate } from 'react-router-dom';
 import { Box, Container, Fab, styled, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom';
-import { dishUrl } from '../../data/urls';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
+import { dishUrl } from '../../data/urls';
+import DishCard from './DishCard';
 
 const DishesContainer = () => {
   const [flashcards, setFlashcards] = useState([]);
@@ -18,8 +18,8 @@ const DishesContainer = () => {
   }, []);
 
   const handleDelete = (deletedId) => {
-    const updatedCards = flashcards.filter((card => card.id !== deletedId))
-    setFlashcards(updatedCards)
+    const updatedCards = flashcards.filter((card => card.id !== deletedId));
+    setFlashcards(updatedCards);
   };
 
   const flashcardList = flashcards.map(card => {
@@ -44,7 +44,7 @@ const DishesContainer = () => {
 export default DishesContainer;
 
 const DishContainer = styled(Container)({
-  padding: '0 0 25px',
+  padding: '25px 0',
 });
 
 const AddBtn = styled(Fab)({
