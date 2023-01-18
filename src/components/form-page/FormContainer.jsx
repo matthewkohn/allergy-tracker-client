@@ -17,7 +17,7 @@ const FormContainer = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  console.log(location.state)
+  console.log("Card that was passed from DishCard: ", location.state)
 
   
   useEffect(() => {
