@@ -17,7 +17,6 @@ Fork and clone this repo, then run the following to install dependencies:
 ```
 npm install
 npm start
-
 ```
 
 ## Licensing (MIT)
