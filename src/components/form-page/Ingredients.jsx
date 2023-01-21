@@ -3,10 +3,10 @@ import { Box, styled, Typography } from '@mui/material';
 import { AllergyContext } from '../../context/chosenAllergyContext';
 
 const Ingredients = () => {
-  const [chosenAllergy] = useContext(AllergyContext);
+  // const [chosenAllergy] = useContext(AllergyContext);
   // const ingredients = chosenAllergy.ingredients;
 
-  console.log(chosenAllergy)
+  // console.log(ingredients.map((i) => console.log(i)))
 
   // const ingredientsList = ingredients.map((ingredient) => (
   //   <Typography key={ ingredient.id } >{ ingredient.name }</Typography>

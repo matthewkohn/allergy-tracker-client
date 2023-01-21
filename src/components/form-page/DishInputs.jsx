@@ -37,7 +37,6 @@ const DishInputs = ({ formData, onUpdate }) => {
 export default DishInputs;
 
 const DishInputsBox = styled(Box)({
-  border: '2px solid purple',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-around',
