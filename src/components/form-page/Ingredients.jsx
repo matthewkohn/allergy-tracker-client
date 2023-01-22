@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
+// import React, { useContext, useEffect, useState } from 'react';
 import { Box, styled, Typography } from '@mui/material';
-import { AllergyContext } from '../../context/chosenAllergyContext';
+// import { AllergyContext } from '../../context/chosenAllergyContext';
 
 const Ingredients = () => {
   // const [chosenAllergy] = useContext(AllergyContext);
-  // const ingredients = chosenAllergy.ingredients;
+  // const [ingredients, setIngredients] = useState([]);
 
   // console.log(ingredients.map((i) => console.log(i)))
 
+  // useEffect(() => {
+    // if (chosenAllergy !== []) {
+    //   setIngredients(chosenAllergy.ingredients)
+    // }
+  // }, [chosenAllergy])
+  
   // const ingredientsList = ingredients.map((ingredient) => (
   //   <Typography key={ ingredient.id } >{ ingredient.name }</Typography>
   // ))
@@ -15,6 +21,7 @@ const Ingredients = () => {
   return (
     <IngredientsBox>
       <Title variant="h3">Ingredients</Title>
+      {/* {ingredientsList} */}
       {/* { chosenAllergy ? ingredientsList : null } */}
     </IngredientsBox>
   )
