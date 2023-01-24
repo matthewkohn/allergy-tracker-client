@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, styled } from '@mui/material';
 
-const AllergyCard = ({ allergy, chosenAllergy, onChooseAllergy }) => {
+const AllergySelection = ({ allergy, chosenAllergy, onChooseAllergy }) => {
   const [isChosen, setIsChosen] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const AllergyCard = ({ allergy, chosenAllergy, onChooseAllergy }) => {
   )
 }
 
-export default AllergyCard
+export default AllergySelection
 
 const StyledCard = styled(Card)({
   padding: '10px',

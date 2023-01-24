@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { Box, styled } from '@mui/material';
-import Allergies from './Allergies';
-import Ingredients from './Ingredients';
+import AllergiesContainer from './AllergiesContainer';
+import IngredientsContainer from './IngredientsContainer';
 import { AllergyContext } from '../../context/chosenAllergyContext';
 
-const AllergyInputs = ({ dishAllergies, onUpdate }) => {
+const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
   const { allergyIngredients } = useContext(AllergyContext);
-  console.log(allergyIngredients)
 
   const handleSelectAllergy = (e) => {
     console.log(e.target.value)
@@ -14,13 +13,13 @@ const AllergyInputs = ({ dishAllergies, onUpdate }) => {
 
   return (
     <AllergiesBox>
-      <Allergies allergies={ allergyIngredients } onChoose={ handleSelectAllergy } />
-      <Ingredients />
+      <AllergiesContainer allergies={ allergyIngredients } onChoose={ handleSelectAllergy } />
+      <IngredientsContainer />
     </AllergiesBox>
   )
 }
 
-export default AllergyInputs
+export default AllergyIngredientInputs
 
 const AllergiesBox = styled(Box)({
   // border: '3px solid orange',

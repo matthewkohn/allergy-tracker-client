@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Box, styled, Typography } from '@mui/material';
 import { AllergyContext } from '../../context/chosenAllergyContext';
-import AllergyCard from './AllergyCard';
+import AllergySelection from './AllergySelection';
 
-const Allergies = ({ allergies, onChoose }) => {
+const AllergiesContainer = ({ allergies, onChoose }) => {
   const { chosenAllergy, setChosenAllergy } = useContext(AllergyContext);
 
   const handleAllergyChoice = (id) => {
@@ -12,7 +12,7 @@ const Allergies = ({ allergies, onChoose }) => {
   }
 
   const allergyCards = allergies.map((allergy) => (
-    <AllergyCard key={ allergy.id } allergy={ allergy } chosenAllergy={ chosenAllergy } onChooseAllergy={ handleAllergyChoice } />
+    <AllergySelection key={ allergy.id } allergy={ allergy } chosenAllergy={ chosenAllergy } onChooseAllergy={ handleAllergyChoice } />
   ));
 
   return (
@@ -23,7 +23,7 @@ const Allergies = ({ allergies, onChoose }) => {
   )
 };
 
-export default Allergies;
+export default AllergiesContainer;
 
 const AllergiesBox = styled(Box)({
   width: '100%',
