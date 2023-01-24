@@ -4,7 +4,7 @@ import { AllergyContext } from '../../context/chosenAllergyContext';
 import AllergyCard from './AllergyCard';
 
 const Allergies = ({ allergies, onChoose }) => {
-  const [chosenAllergy, setChosenAllergy] = useContext(AllergyContext);
+  const { chosenAllergy, setChosenAllergy } = useContext(AllergyContext);
 
   const handleAllergyChoice = (id) => {
     const chosen = allergies.find(a => a.id === id);

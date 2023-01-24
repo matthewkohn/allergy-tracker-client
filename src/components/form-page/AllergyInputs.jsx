@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Box, styled } from '@mui/material';
-import { allergyUrl } from '../../data/urls';
 import Allergies from './Allergies';
 import Ingredients from './Ingredients';
+import { AllergyContext } from '../../context/chosenAllergyContext';
 
 const AllergyInputs = ({ dishAllergies, onUpdate }) => {
-  const [allergyIngredients, setAllergyIngredients] = useState([]);
-  // chosenAllergy
-  // chosenIngredients
-
-
-  useEffect(() => {
-    fetch(allergyUrl).then((res) => res.json()).then(setAllergyIngredients)
-    .catch(console.log)
-  }, [])
-
+  const { allergyIngredients } = useContext(AllergyContext);
   console.log(allergyIngredients)
 
   const handleSelectAllergy = (e) => {
