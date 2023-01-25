@@ -4,15 +4,20 @@ import { allergyUrl } from '../data/urls';
 const AllergyContext = createContext();
 
 const AllergyProvider = ({ children }) => {
-  const [chosenAllergy, setChosenAllergy] = useState({});
+  const [currentAllergy, setCurrentAllergy] = useState({});
   const [allergyIngredients, setAllergyIngredients] = useState([]);
 
   useEffect(() => {
-    fetch(allergyUrl).then((res) => res.json()).then(setAllergyIngredients)
+    fetch(allergyUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      setAllergyIngredients(data);
+      setCurrentAllergy(data[0]);
+    })
     .catch(console.log)
   }, []);
 
-  const value = { chosenAllergy, setChosenAllergy, allergyIngredients, setAllergyIngredients };
+  const value = { currentAllergy, setCurrentAllergy, allergyIngredients, setAllergyIngredients };
 
   return (
     <AllergyContext.Provider value={ value } >

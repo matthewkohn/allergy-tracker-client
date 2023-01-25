@@ -3,7 +3,7 @@ import { Box, Button, FormControl, styled } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import DishInputs from './DishInputs';
 import AllergyIngredientInputs from './AllergyIngredientInputs';
-import { AllergyProvider } from '../../context/chosenAllergyContext';
+import { AllergyProvider } from '../../context/AllergyContext';
 
 const Form = () => {
   const [formData, setFormData] = useState({

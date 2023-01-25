@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Card, styled } from '@mui/material';
+import { AllergyContext } from '../../context/AllergyContext';
 
-const AllergySelection = ({ allergy, chosenAllergy, onChooseAllergy }) => {
+const AllergySelection = ({ allergy, onChooseAllergy }) => {
+  const { currentAllergy } = useContext(AllergyContext);
   const [isChosen, setIsChosen] = useState(false);
 
   useEffect(() => {
-    if (chosenAllergy.id === allergy.id) {
+    if (currentAllergy.id === allergy.id) {
       setIsChosen(true);
     } else {
       setIsChosen(false);
     }
-  }, [allergy.id, chosenAllergy.id])
+  }, [allergy.id, currentAllergy.id])
 
   return (
     <StyledCard

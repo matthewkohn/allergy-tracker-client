@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
 import { Box, styled, Typography } from '@mui/material';
-import { AllergyContext } from '../../context/chosenAllergyContext';
+import { AllergyContext } from '../../context/AllergyContext';
 import AllergySelection from './AllergySelection';
 
-const AllergiesContainer = ({ allergies, onChoose }) => {
-  const { chosenAllergy, setChosenAllergy } = useContext(AllergyContext);
+const AllergiesContainer = ({ onChoose }) => {
+  const { currentAllergy, setCurrentAllergy, allergyIngredients } = useContext(AllergyContext);
 
   const handleAllergyChoice = (id) => {
-    const chosen = allergies.find(a => a.id === id);
-    setChosenAllergy(chosen);
+    const chosen = allergyIngredients.find(a => a.id === id);
+    setCurrentAllergy(chosen);
   }
 
-  const allergyCards = allergies.map((allergy) => (
-    <AllergySelection key={ allergy.id } allergy={ allergy } chosenAllergy={ chosenAllergy } onChooseAllergy={ handleAllergyChoice } />
+  const allergyCards = allergyIngredients.map((allergy) => (
+    <AllergySelection key={ allergy.id } allergy={ allergy } onChooseAllergy={ handleAllergyChoice } />
   ));
 
   return (

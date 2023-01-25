@@ -1,5 +1,9 @@
-const dishUrl = 'http://localhost:9292/dishes';
+const localhost = 'http://localhost:9292';
 
-const allergyUrl = 'http://localhost:9292/allergies';
+const dishUrl = localhost + '/dishes';
 
-export { dishUrl, allergyUrl };
+const allergyUrl = localhost + '/allergies';
+
+const ingredientUrl = localhost + '/ingredients';
+
+export { dishUrl, allergyUrl, ingredientUrl };

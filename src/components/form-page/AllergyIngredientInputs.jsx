@@ -1,20 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Box, styled } from '@mui/material';
 import AllergiesContainer from './AllergiesContainer';
 import IngredientsContainer from './IngredientsContainer';
-import { AllergyContext } from '../../context/chosenAllergyContext';
+
 
 const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
-  const { allergyIngredients } = useContext(AllergyContext);
 
   const handleSelectAllergy = (e) => {
     console.log(e.target.value)
   }
 
+  const handleSelectIngredients = (e) => {
+    console.log(e.target.value)
+  }
+
+  const addNewIngredient = (e) => {
+    e.preventDefault();
+    console.log("Click Add Ingredient")
+    // make fetch call to POST '/ingredients'
+    // Add ingredients_controller in server with 'post' route + test in Postman
+    // update allergyIngredients in AllergyContext
+  }
+
   return (
     <AllergiesBox>
-      <AllergiesContainer allergies={ allergyIngredients } onChoose={ handleSelectAllergy } />
-      <IngredientsContainer />
+      <AllergiesContainer onChoose={ handleSelectAllergy } />
+      <IngredientsContainer 
+        onAddNew={ addNewIngredient }
+        onChooseIngredients={ handleSelectIngredients } />
     </AllergiesBox>
   )
 }
@@ -22,7 +35,6 @@ const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
 export default AllergyIngredientInputs
 
 const AllergiesBox = styled(Box)({
-  // border: '3px solid orange',
   display: 'flex',
   width: '60vw',
   justifyContent: 'center'
