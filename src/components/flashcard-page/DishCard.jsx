@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardActions, IconButton, styled, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Dish from './DishSide';
-import Allergy from './AllergySide';
+import DishSide from './DishSide';
+import AllergySide from './AllergySide';
 import { dishUrl } from '../../data/urls';
 
 const DishCard = ({ card, onDelete }) => {
@@ -25,9 +25,9 @@ const DishCard = ({ card, onDelete }) => {
   };
 
   return (
-    <FlashCard variant="outlined" raised onClick={ () => setFlip(!flip) }>
+    <FlashCard variant="outlined" onClick={ () => setFlip(!flip) }>
       <Header gutterBottom variant="h3">{card.name}</Header>
-      {flip ? <Dish card={card} /> : <Allergy card={card} />}
+      {flip ? <DishSide card={card} /> : <AllergySide card={card} />}
       <CardActions>
         <IconButton onClick={ () => navigate('/update', { state: card }) } >
           <EditIcon />
