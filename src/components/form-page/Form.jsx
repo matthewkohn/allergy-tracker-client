@@ -14,6 +14,7 @@ const Form = () => {
   });
   const location = useLocation();
   const updateCardObj = location.state;
+console.log("FORM DATA: ", formData)
 
   useEffect(() => {
     if (updateCardObj) {
@@ -27,10 +28,6 @@ const Form = () => {
     setFormData({ ...formData, [name]: value })
   };
 
-  const handleAllergyUpdate = (e) => {
-    console.log("Allergy update: ", e.target)
-  }
-
   return (
     <AllergyProvider>
       <FormBox component="form" id="dish-allergy-form">
@@ -38,7 +35,7 @@ const Form = () => {
           <div>Form</div>
           <FormSection>
             <DishInputs formData={ formData } onUpdate={ handleDishInput } />
-            <AllergyIngredientInputs dishAllergies={ formData.dish_allergies } onUpdate={ handleAllergyUpdate } />
+            <AllergyIngredientInputs dishAllergies={ formData.dish_allergies } onUpdate={ setFormData } />
           </FormSection>
           <SubmitBtn 
             variant="contained" 

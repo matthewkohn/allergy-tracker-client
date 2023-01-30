@@ -6,14 +6,15 @@ import { AllergyContext } from '../../context/AllergyContext';
 const IngredientsContainer = ({ onAddNew, onChooseIngredients }) => {
   const { currentAllergy } = useContext(AllergyContext);
   const [newIngredient, setNewIngredient] = useState('');
-  // const [chosenIngredients, setChosenIngredients] = useState([]);
+
+// pass onChooseIngredients to ingredientsList items
+// pass 
 
   const ingredientsList = currentAllergy.ingredients?.map((ingredient) => (
     <FormControlLabel 
       key={ ingredient.id } 
       control={ <Checkbox /> } 
       label={ ingredient.name }
-      // checked=
     />
   ));
 
@@ -50,7 +51,7 @@ const IngredientsContainer = ({ onAddNew, onChooseIngredients }) => {
 export default IngredientsContainer;
 
 const IngredientsBox = styled(Box)({
-  border: '4px solid rebeccapurple',
+  // border: '4px solid rebeccapurple',
   width: '100%',
   padding: '20px',
 });

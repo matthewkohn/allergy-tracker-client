@@ -6,12 +6,13 @@ import IngredientsContainer from './IngredientsContainer';
 
 const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
 
-  const handleSelectAllergy = (e) => {
-    console.log(e.target.value)
-  }
-
   const handleSelectIngredients = (e) => {
     console.log(e.target.value)
+    // setFormData === onUpdate
+    // When ingredient checkbox is checked, 
+      // add to formData
+      // pass ingredient name to AllergiesContainer >> AllergySelection
+      // highlight the associated allergy
   }
 
   const addNewIngredient = (e) => {
@@ -24,7 +25,7 @@ const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
 
   return (
     <AllergiesBox>
-      <AllergiesContainer onChoose={ handleSelectAllergy } />
+      <AllergiesContainer />
       <IngredientsContainer 
         onAddNew={ addNewIngredient }
         onChooseIngredients={ handleSelectIngredients } />

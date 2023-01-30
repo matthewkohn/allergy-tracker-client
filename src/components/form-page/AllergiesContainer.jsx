@@ -3,8 +3,8 @@ import { Box, styled, Typography } from '@mui/material';
 import { AllergyContext } from '../../context/AllergyContext';
 import AllergySelection from './AllergySelection';
 
-const AllergiesContainer = ({ onChoose }) => {
-  const { currentAllergy, setCurrentAllergy, allergyIngredients } = useContext(AllergyContext);
+const AllergiesContainer = () => {
+  const { setCurrentAllergy, allergyIngredients } = useContext(AllergyContext);
 
   const handleAllergyChoice = (id) => {
     const chosen = allergyIngredients.find(a => a.id === id);

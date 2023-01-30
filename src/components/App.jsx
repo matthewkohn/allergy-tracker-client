@@ -12,8 +12,6 @@ const App = () => {
         <Route path='/' element={ <DishesContainer /> } />
         <Route path='/new' element={ <Form /> } />
         <Route path='/update' element={ <Form /> } />
-        {/* <Route path='/new' element={ <FormContainer /> } />
-        <Route path='/update' element={ <FormContainer /> } /> */}
       </Routes>
     </Container>
   )
