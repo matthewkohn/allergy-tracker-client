@@ -13,6 +13,11 @@ const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
       // add to formData
       // pass ingredient name to AllergiesContainer >> AllergySelection
       // highlight the associated allergy
+      // dish_allergies: [
+      //   ingredient_name: "",
+      //   is_omittable: false,
+      //   allergy: { name: "" }
+      // ]
   }
 
   const addNewIngredient = (e) => {
