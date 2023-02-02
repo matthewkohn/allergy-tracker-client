@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Checkbox } from '@mui/material';
+import { Checkbox, FormControlLabel } from '@mui/material';
 
-const IngredientCheckbox = () => {
+const IngredientCheckbox = ({ dishAllergies, ingredient }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = (e) => {
@@ -9,7 +9,9 @@ const IngredientCheckbox = () => {
   }
 
   return (
-    <Checkbox
+    <FormControlLabel
+      control={ <Checkbox /> } 
+      label={ ingredient }
       checked={ checked }
       onChange={ handleChange }
       inputProps={{ 'aria-label': 'controlled' }}

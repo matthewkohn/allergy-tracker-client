@@ -14,6 +14,7 @@ const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
       // pass ingredient name to AllergiesContainer >> AllergySelection
       // highlight the associated allergy
       // dish_allergies: [
+      //   id: 1,
       //   ingredient_name: "",
       //   is_omittable: false,
       //   allergy: { name: "" }
@@ -33,7 +34,9 @@ const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
       <AllergiesContainer />
       <IngredientsContainer 
         onAddNew={ addNewIngredient }
-        onChooseIngredients={ handleSelectIngredients } />
+        onChooseIngredients={ handleSelectIngredients } 
+        dishAllergies={ dishAllergies }
+      />
     </AllergiesBox>
   )
 }
