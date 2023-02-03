@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Box, Button, FormControl, styled } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import DishInputs from './DishInputs';
 import AllergyIngredientInputs from './AllergyIngredientInputs';
 import { AllergyProvider } from '../../context/AllergyContext';
+import { FormContext } from '../../context/FormContext';
 
 const Form = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    price: 0,
-    dish_allergies: []
-  });
+  const { formData, setFormData } = useContext(FormContext);
+  // const [formData, setFormData] = useState({
+  //   name: '',
+  //   description: '',
+  //   price: 0,
+  //   dish_allergies: []
+  // });
   const location = useLocation();
   const updateCardObj = location.state;
-console.log("FORM DATA: ", formData)
 
   useEffect(() => {
     if (updateCardObj) {
       setFormData(updateCardObj)
     }
-  }, [updateCardObj]);
+    // eslint-disable-next-line
+  }, []);
 
   const handleDishInput = (e) => {
     const name = e.target.name;
