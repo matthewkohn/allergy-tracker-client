@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
-const IngredientCheckbox = ({ dishAllergies, ingredient }) => {
+const IngredientCheckbox = ({ dishAllergies, ingredient, onChecked }) => {
   const [checked, setChecked] = useState(false);
-console.log(dishAllergies)
+console.log(ingredient)
   // useEffect(() => {
   //   const found = dishAllergies.find(i => i.ingredient_name === ingredient)
   //   if (found) {
@@ -12,13 +12,15 @@ console.log(dishAllergies)
   // }, [dishAllergies, ingredient]);
 
   const handleChange = (e) => {
-    setChecked(e.target.checked);
+    const isChecked = e.target.checked;
+    setChecked(isChecked);
+    onChecked(ingredient.id, isChecked);
   }
 
   return (
     <FormControlLabel
       control={ <Checkbox /> } 
-      label={ ingredient }
+      label={ ingredient.name }
       checked={ checked }
       onChange={ handleChange }
       inputProps={{ 'aria-label': 'controlled' }}

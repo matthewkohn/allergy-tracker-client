@@ -6,8 +6,8 @@ import IngredientsContainer from './IngredientsContainer';
 
 const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
 
-  const handleSelectIngredients = (e) => {
-    console.log(e.target.value)
+  const handleSelectIngredients = (id, isChecked) => {
+    console.log(id, isChecked)
     // setFormData === onUpdate
     // When ingredient checkbox is checked, 
       // add to formData
@@ -21,19 +21,19 @@ const AllergyIngredientInputs = ({ dishAllergies, onUpdate }) => {
       // ]
   }
 
-  const addNewIngredient = (e) => {
-    e.preventDefault();
-    console.log("Click Add Ingredient")
+  // const addNewIngredient = (e) => {
+  //   e.preventDefault();
+  //   console.log("Click Add Ingredient")
     // make fetch call to POST '/ingredients'
     // Add ingredients_controller in server with 'post' route + test in Postman
     // update allergyIngredients in AllergyContext
-  }
+  // }
 
   return (
     <AllergiesBox>
       <AllergiesContainer />
       <IngredientsContainer 
-        onAddNew={ addNewIngredient }
+        // onAddNew={ addNewIngredient }
         onChooseIngredients={ handleSelectIngredients } 
         dishAllergies={ dishAllergies }
       />

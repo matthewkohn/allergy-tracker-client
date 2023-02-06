@@ -6,18 +6,16 @@ import { Box, FormGroup, styled, Typography } from '@mui/material';
 import { AllergyContext } from '../../context/AllergyContext';
 import IngredientCheckbox from './IngredientCheckbox';
 
-const IngredientsContainer = ({ dishAllergies, onAddNew, onChooseIngredients }) => {
+const IngredientsContainer = ({ dishAllergies, onChooseIngredients }) => {
   const { currentAllergy } = useContext(AllergyContext);
   // const [newIngredient, setNewIngredient] = useState('');
-
-// pass onChooseIngredients to ingredientsList items
-// pass 
 
   const ingredientsList = currentAllergy.ingredients?.map((ingredient) => (
     <IngredientCheckbox 
       key={ ingredient.id } 
       dishAllergies={ dishAllergies }
-      ingredient={ ingredient.name }
+      ingredient={ ingredient }
+      onChecked={ onChooseIngredients }
     />
   ));
 

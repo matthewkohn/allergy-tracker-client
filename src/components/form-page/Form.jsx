@@ -8,12 +8,6 @@ import { FormContext } from '../../context/FormContext';
 
 const Form = () => {
   const { formData, setFormData } = useContext(FormContext);
-  // const [formData, setFormData] = useState({
-  //   name: '',
-  //   description: '',
-  //   price: 0,
-  //   dish_allergies: []
-  // });
   const location = useLocation();
   const updateCardObj = location.state;
 
