@@ -5,17 +5,43 @@ import React, { useContext } from 'react';
 import { Box, FormGroup, styled, Typography } from '@mui/material';
 import { AllergyContext } from '../../context/AllergyContext';
 import IngredientCheckbox from './IngredientCheckbox';
+import { FormContext } from '../../context/FormContext';
 
-const IngredientsContainer = ({ dishAllergies, onChooseIngredients }) => {
+const IngredientsContainer = () => {
   const { currentAllergy } = useContext(AllergyContext);
+  const { formData, setFormData } = useContext(FormContext);
   // const [newIngredient, setNewIngredient] = useState('');
+console.log("current allergy: ", currentAllergy)
+console.log("formData: ", formData)
+
+  const handleSelectIngredients = (ingredient, isChecked) => {
+    console.log(ingredient, isChecked)
+    if (isChecked) {
+      setFormData({
+        ...formData,
+        dish_allergies: [
+          ...formData.dish_allergies,
+          {
+            allergy: { name: currentAllergy.name },
+            ingredient_name: ingredient.name,
+            is_omittable: false
+          }
+        ]
+      })
+    } else {
+      const updatedDishAllergies = formData.dish_allergies.filter((i) => i.id !== ingredient.id)
+      setFormData({
+        ...formData,
+        dish_allergies: updatedDishAllergies
+      })
+    }
+  }
 
   const ingredientsList = currentAllergy.ingredients?.map((ingredient) => (
     <IngredientCheckbox 
       key={ ingredient.id } 
-      dishAllergies={ dishAllergies }
       ingredient={ ingredient }
-      onChecked={ onChooseIngredients }
+      onChecked={ handleSelectIngredients }
     />
   ));
 

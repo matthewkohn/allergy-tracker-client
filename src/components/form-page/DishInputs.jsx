@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, styled, TextField, Typography } from '@mui/material';
+import { FormContext } from '../../context/FormContext'
 
-const DishInputs = ({ formData, onUpdate }) => {
+const DishInputs = ({ onUpdate }) => {
+  const { formData } = useContext(FormContext);
   const { name, description, price } = formData;
 
   const textField = (value, inputName, inputLabel, inputType, isMultiLine, max) => {

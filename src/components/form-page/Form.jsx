@@ -30,8 +30,8 @@ const Form = () => {
         <FormControl>
           <div>Form</div>
           <FormSection>
-            <DishInputs formData={ formData } onUpdate={ handleDishInput } />
-            <AllergyIngredientInputs dishAllergies={ formData.dish_allergies } onUpdate={ setFormData } />
+            <DishInputs onUpdate={ handleDishInput } />
+            <AllergyIngredientInputs />
           </FormSection>
           <SubmitBtn 
             variant="contained" 
